@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import odairImg from "@/assets/odair.jpg";
+import logoImg from "@/assets/logo.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -121,9 +122,11 @@ function Header() {
     >
       <div className="container-wide flex h-16 items-center justify-between md:h-20">
         <button onClick={() => go("inicio")} className="flex items-center gap-2.5 group">
-          <span className="bg-gradient-brand grid h-9 w-9 place-items-center rounded-lg shadow-brand-glow">
-            <Dumbbell className="h-5 w-5 text-white" />
-          </span>
+          <img
+            src={logoImg}
+            alt="Odair Filho Personal Trainer"
+            className="h-10 w-10 rounded-lg object-cover shadow-brand-glow md:h-11 md:w-11"
+          />
           <span className="font-display text-sm font-extrabold leading-tight tracking-tight md:text-base">
             ODAIR FILHO
             <span className="text-muted-foreground block text-[10px] font-medium tracking-[0.2em] md:text-xs">
