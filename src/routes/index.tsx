@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import odairImg from "@/assets/odair.jpg";
-import logoImg from "@/assets/logo.jpg";
+import logoImg from "@/assets/logo.png";
 import {
   Accordion,
   AccordionContent,
@@ -57,10 +57,10 @@ export const Route = createFileRoute("/")({
 });
 
 // ============ CONFIG — edit easily ============
-const WHATSAPP_NUMBER = "5543999999999"; // (DDI+DDD+número, somente dígitos)
+const WHATSAPP_NUMBER = "5543991197602"; // (DDI+DDD+número, somente dígitos)
 const WHATSAPP_MESSAGE = "Olá, gostaria de agendar uma avaliação.";
-const INSTAGRAM_URL = "https://instagram.com/odairfilho";
-const INSTAGRAM_HANDLE = "@odairfilho";
+const INSTAGRAM_URL = "https://instagram.com/odairfilhopersonal";
+const INSTAGRAM_HANDLE = "@odairfilhopersonal";
 const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 const NAV = [

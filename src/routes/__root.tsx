@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           description: "Personal Trainer especializado em dores articulares, quadril e joelhos.",
           areaServed: "Londrina, PR",
           address: { "@type": "PostalAddress", addressLocality: "Londrina", addressRegion: "PR", addressCountry: "BR" },
-          sameAs: ["https://instagram.com/odairfilho"],
+          sameAs: ["https://instagram.com/odairfilhopersonal"],
         }),
       },
     ],
