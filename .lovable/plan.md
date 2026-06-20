@@ -1,22 +1,26 @@
-## Objetivo
-Corrigir a logo no header, substituir a imagem de fundo do Hero por uma foto do Odair com a logo da marca na camiseta, e atualizar as informações de contato.
+## Por que está dando 404 na Vercel
 
-## Passos
+Este projeto **não é um app Vite/React estático** — é **TanStack Start com SSR**, configurado para rodar em **Cloudflare Workers** (veja `vite.config.ts` e `src/server.ts`). Quando a Vercel detecta como "Vite" e faz build padrão, ela publica apenas os assets estáticos sem o servidor SSR — por isso qualquer rota retorna 404.
 
-### 1. Corrigir logo no cabeçalho
-- Substituir o import de `logoImg` que aponta para o arquivo vazio (`src/assets/logo.jpg`) para o novo arquivo PNG transparente (`src/assets/logo.png`).
-- Verificar se o logo renderiza corretamente no header.
+Você tem duas opções:
 
-### 2. Gerar Hero com logo na camiseta
-- Usar a foto original do Odair (`Odair_Filho.jpeg`) como base.
-- Gerar uma versão editada onde o logo "RPFIT" da camiseta é substituído pela nova logo (ouroboros vermelho).
-- Salvar como `src/assets/hero.jpg`.
+---
 
-### 3. Atualizar informações de contato
-- **Instagram**: alterar de `@odairfilho` / `instagram.com/odairfilho` para `@odairfilhopersonal` / `instagram.com/odairfilhopersonal`.
-- **WhatsApp**: alterar de `5543999999999` para `5543991197602`.
+### Opção A (recomendada): Publicar pela própria Lovable
 
-## Detalhes técnicos
-- Arquivo a editar: `src/routes/index.tsx` (linhas de configuração e import do logo).
-- Imagem Hero será gerada via `imagegen--edit_image` a partir da foto original do upload.
-- Nenhuma mudança de estrutura ou pacotes necessária.
+Um clique no botão **Publish** (canto superior direito do editor) e o site fica no ar em `*.lovable.app`, já com SSR, rotas e sitemap funcionando. Depois você conecta um domínio próprio em Project Settings → Domains. Zero configuração, zero risco de quebrar o build.
+
+### Opção B: Adaptar o projeto para a Vercel
+
+Trocar o preset de deploy de Cloudflare para Vercel:
+
+1. Adicionar `nitro: { preset: "vercel" }` em `vite.config.ts` (via `defineConfig` do `@lovable.dev/vite-tanstack-config`).
+2. Atualizar o `README.md` com as novas instruções (sem `vercel.json` manual — o Nitro gera o output correto em `.vercel/output`).
+3. Na Vercel: **Framework Preset = Other**, Build Command = `bun run build`, Output deixar em branco (Nitro define automaticamente).
+4. Re-deploy.
+
+> Observação: o `src/server.ts` (wrapper de erro SSR) continua funcionando nos dois presets.
+
+---
+
+**Qual opção você quer?** Se não responder, sigo com a **Opção A** (publicar pela Lovable é mais rápido e confiável) e te explico como apontar seu domínio depois.
