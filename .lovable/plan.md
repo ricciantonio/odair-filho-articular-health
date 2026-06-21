@@ -1,26 +1,38 @@
-## Por que está dando 404 na Vercel
+## Conectar domínio próprio: odairfilhopersonal.com.br
 
-Este projeto **não é um app Vite/React estático** — é **TanStack Start com SSR**, configurado para rodar em **Cloudflare Workers** (veja `vite.config.ts` e `src/server.ts`). Quando a Vercel detecta como "Vite" e faz build padrão, ela publica apenas os assets estáticos sem o servidor SSR — por isso qualquer rota retorna 404.
+### O que fazer
+O site já está publicado em **https://odairfilhopersonal.lovable.app**. Agora vamos conectar o domínio **odairfilhopersonal.com.br** (registrado no Registro.br).
 
-Você tem duas opções:
+### Passo a passo
 
----
+#### 1. No Lovable — adicionar o domínio
+- Vá em **Project Settings → Project section → Domains**
+- Clique em **Connect Domain**
+- Digite: `odairfilhopersonal.com.br`
+- Anote os registros DNS que o Lovable fornecer (tipicamente):
+  - **A Record** para `@` (root) → `185.158.133.1`
+  - **A Record** para `www` → `185.158.133.1`
+  - **TXT Record** para `_lovable` → valor de verificação
 
-### Opção A (recomendada): Publicar pela própria Lovable
+#### 2. No Registro.br — configurar DNS
+- Acesse o painel do Registro.br
+- Vá na zona de DNS do domínio
+- Adicione os registros exatamente como o Lovable indicou:
+  - `@` tipo A → `185.158.133.1`
+  - `www` tipo A → `185.158.133.1`
+  - `_lovable` tipo TXT → valor fornecido
+- Salve e aguarde a propagação (pode levar de alguns minutos até 72 horas)
 
-Um clique no botão **Publish** (canto superior direito do editor) e o site fica no ar em `*.lovable.app`, já com SSR, rotas e sitemap funcionando. Depois você conecta um domínio próprio em Project Settings → Domains. Zero configuração, zero risco de quebrar o build.
+#### 3. No Lovable — concluir
+- Após adicionar os registros, clique em **Verify** ou aguarde a verificação automática
+- O status passará para **Verifying** → **Setting up** → **Active**
+- Quando ficar **Active**, o site responderá em `https://odairfilhopersonal.com.br`
 
-### Opção B: Adaptar o projeto para a Vercel
+### Observações
+- Adicione **ambos** os domínios (`odairfilhopersonal.com.br` e `www.odairfilhopersonal.com.br`) no Lovable
+- Escolha um deles como **Primary** para redirecionamento
+- O SSL (HTTPS) será provisionado automaticamente pelo Lovable
+- Se houver problemas de propagação, use o DNSChecker.org para confirmar os registros
 
-Trocar o preset de deploy de Cloudflare para Vercel:
-
-1. Adicionar `nitro: { preset: "vercel" }` em `vite.config.ts` (via `defineConfig` do `@lovable.dev/vite-tanstack-config`).
-2. Atualizar o `README.md` com as novas instruções (sem `vercel.json` manual — o Nitro gera o output correto em `.vercel/output`).
-3. Na Vercel: **Framework Preset = Other**, Build Command = `bun run build`, Output deixar em branco (Nitro define automaticamente).
-4. Re-deploy.
-
-> Observação: o `src/server.ts` (wrapper de erro SSR) continua funcionando nos dois presets.
-
----
-
-**Qual opção você quer?** Se não responder, sigo com a **Opção A** (publicar pela Lovable é mais rápido e confiável) e te explico como apontar seu domínio depois.
+### Não é necessário alterar código
+Esta configuração é feita 100% via interface do Lovable e DNS do Registro.br — nenhuma mudança no projeto é necessária.
