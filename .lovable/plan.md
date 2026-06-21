@@ -1,38 +1,46 @@
-## Conectar domínio próprio: odairfilhopersonal.com.br
+## Ativar HTTPS e tornar o site visível no Google
 
-### O que fazer
-O site já está publicado em **https://odairfilhopersonal.lovable.app**. Agora vamos conectar o domínio **odairfilhopersonal.com.br** (registrado no Registro.br).
+Boas notícias: no Lovable o **SSL é provisionado automaticamente**, sem ação manual. Você não precisa subir certificado, configurar Let's Encrypt nem mexer em porta 443. Mas o "não aparece no Google" é outro problema (indexação), então vou tratar os dois.
 
-### Passo a passo
+### Parte 1 — Confirmar que o HTTPS está ativo
 
-#### 1. No Lovable — adicionar o domínio
-- Vá em **Project Settings → Project section → Domains**
-- Clique em **Connect Domain**
-- Digite: `odairfilhopersonal.com.br`
-- Anote os registros DNS que o Lovable fornecer (tipicamente):
-  - **A Record** para `@` (root) → `185.158.133.1`
-  - **A Record** para `www` → `185.158.133.1`
-  - **TXT Record** para `_lovable` → valor de verificação
+1. Abrir **Project Settings → Project section → Domains**.
+2. Olhar o status do `odairfilhopersonal.com.br`:
+   - **Active** (verde) → HTTPS já está ligado. Acesse `https://odairfilhopersonal.com.br` e veja o cadeado no navegador.
+   - **Verifying / Setting up** → DNS já bateu, o Lovable está emitindo o certificado SSL. Aguardar (alguns minutos até ~1h normalmente).
+   - **Offline / Failed** → o certificado não saiu. Causas comuns:
+     - Falta o registro `A` em `@` ou `www` apontando para `185.158.133.1`.
+     - Existe registro `CAA` no Registro.br bloqueando Let's Encrypt → remover ou liberar `letsencrypt.org`.
+     - DNS ainda propagando (até 72h, conferir em dnschecker.org).
+3. Adicionar também `www.odairfilhopersonal.com.br` se ainda não estiver, e marcar um deles como **Primary** — o outro redireciona automaticamente.
 
-#### 2. No Registro.br — configurar DNS
-- Acesse o painel do Registro.br
-- Vá na zona de DNS do domínio
-- Adicione os registros exatamente como o Lovable indicou:
-  - `@` tipo A → `185.158.133.1`
-  - `www` tipo A → `185.158.133.1`
-  - `_lovable` tipo TXT → valor fornecido
-- Salve e aguarde a propagação (pode levar de alguns minutos até 72 horas)
+### Parte 2 — Forçar redirecionamento para HTTPS
 
-#### 3. No Lovable — concluir
-- Após adicionar os registros, clique em **Verify** ou aguarde a verificação automática
-- O status passará para **Verifying** → **Setting up** → **Active**
-- Quando ficar **Active**, o site responderá em `https://odairfilhopersonal.com.br`
+O Lovable já redireciona `http://` → `https://` por padrão quando o domínio fica **Active**. Nenhum código precisa ser alterado no projeto. Para validar, abra em aba anônima: `http://odairfilhopersonal.com.br` → deve cair em `https://...` com cadeado.
 
-### Observações
-- Adicione **ambos** os domínios (`odairfilhopersonal.com.br` e `www.odairfilhopersonal.com.br`) no Lovable
-- Escolha um deles como **Primary** para redirecionamento
-- O SSL (HTTPS) será provisionado automaticamente pelo Lovable
-- Se houver problemas de propagação, use o DNSChecker.org para confirmar os registros
+### Parte 3 — Fazer o site aparecer no Google
 
-### Não é necessário alterar código
-Esta configuração é feita 100% via interface do Lovable e DNS do Registro.br — nenhuma mudança no projeto é necessária.
+SSL ativo ≠ indexado. O Google só lista o site depois de descobrir e rastrear. Passos:
+
+1. **Confirmar que não está bloqueado**: o `public/robots.txt` do projeto não pode ter `Disallow: /`. Vou checar e ajustar se necessário.
+2. **Garantir sitemap**: o projeto já tem `src/routes/sitemap[.]xml.ts`. Vou conferir se o `BASE_URL` aponta para `https://odairfilhopersonal.com.br` (hoje aponta para o `.lovable.app`) e atualizar.
+3. **Cadastrar no Google Search Console** (você faz):
+   - Acessar https://search.google.com/search-console
+   - Adicionar propriedade do tipo **Domínio** com `odairfilhopersonal.com.br`
+   - Validar via registro TXT no Registro.br (o Search Console vai fornecer o valor)
+   - Em **Sitemaps**, enviar: `https://odairfilhopersonal.com.br/sitemap.xml`
+   - Em **Inspeção de URL**, colar a home e clicar em **Solicitar indexação**
+4. **Esperar**: a primeira indexação leva de alguns dias a 2–3 semanas. Nome próprio (ex: "Odair Filho personal") tende a indexar mais rápido.
+
+### O que eu vou alterar no código (quando aprovar o plano)
+
+- Atualizar `BASE_URL` em `src/routes/sitemap[.]xml.ts` para `https://odairfilhopersonal.com.br`.
+- Atualizar `canonical` / `og:url` nas rotas e no `__root.tsx` para o mesmo domínio.
+- Verificar `public/robots.txt` (corrigir se houver `Disallow: /`).
+- Republicar o site para as mudanças entrarem em produção.
+
+### O que você precisa fazer manualmente
+
+- Conferir o status **Active** no painel de Domains.
+- Cadastrar e validar o domínio no Google Search Console.
+- Enviar o sitemap e solicitar indexação da home.

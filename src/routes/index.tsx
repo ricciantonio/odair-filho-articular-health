@@ -46,10 +46,10 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:title", content: "Odair Filho Personal Trainer | Especialista em Dores Articulares" },
       { property: "og:description", content: "Acabe com suas dores e recupere sua qualidade de vida. Metodologia comprovada, 14+ anos de experiência." },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://odairfilhopersonal.com.br/" },
     ],
     links: [
-      { rel: "canonical", href: "/" },
+      { rel: "canonical", href: "https://odairfilhopersonal.com.br/" },
       { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" } as never,
     ],
   }),
