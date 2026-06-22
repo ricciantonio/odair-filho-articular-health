@@ -79,22 +79,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#000000" },
       { title: "Odair Filho Personal Trainer | Especialista em Dores Articulares" },
-      { name: "description", content: "Personal Trainer especializado em dores articulares, quadril e joelhos. Mais de 14 anos ajudando pessoas a recuperarem qualidade de vida em Londrina-PR." },
+      {
+        name: "description",
+        content:
+          "Personal Trainer especializado em dores articulares, quadril e joelhos. Mais de 14 anos ajudando pessoas a recuperarem qualidade de vida em Londrina-PR.",
+      },
       { name: "author", content: "Odair Filho" },
       { name: "google-site-verification", content: "TKxpsGerfJ7aObGyK9qr-vgJTNeyLbsFxo9PfMI19fA" },
-      { property: "og:title", content: "Odair Filho Personal Trainer | Especialista em Dores Articulares" },
-      { property: "og:description", content: "Acabe com suas dores articulares e recupere sua qualidade de vida com metodologia comprovada. 14+ anos de experiência." },
+      {
+        property: "og:title",
+        content: "Odair Filho Personal Trainer | Especialista em Dores Articulares",
+      },
+      {
+        property: "og:description",
+        content:
+          "Acabe com suas dores articulares e recupere sua qualidade de vida com metodologia comprovada. 14+ anos de experiência.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Odair Filho Personal Trainer" },
-      { name: "twitter:description", content: "Especialista em dores articulares. Recupere sua qualidade de vida." },
+      {
+        name: "twitter:description",
+        content: "Especialista em dores articulares. Recupere sua qualidade de vida.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap",
+      },
     ],
     scripts: [
       {
@@ -105,7 +122,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Odair Filho Personal Trainer",
           description: "Personal Trainer especializado em dores articulares, quadril e joelhos.",
           areaServed: "Londrina, PR",
-          address: { "@type": "PostalAddress", addressLocality: "Londrina", addressRegion: "PR", addressCountry: "BR" },
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Londrina",
+            addressRegion: "PR",
+            addressCountry: "BR",
+          },
           sameAs: ["https://instagram.com/odairfilhopersonal"],
         }),
       },

@@ -44,8 +44,15 @@ export const Route = createFileRoute("/")({
         content:
           "Personal Trainer especializado em dores articulares, quadril e joelhos. Mais de 14 anos ajudando pessoas a recuperarem qualidade de vida em Londrina-PR.",
       },
-      { property: "og:title", content: "Odair Filho Personal Trainer | Especialista em Dores Articulares" },
-      { property: "og:description", content: "Acabe com suas dores e recupere sua qualidade de vida. Metodologia comprovada, 14+ anos de experiência." },
+      {
+        property: "og:title",
+        content: "Odair Filho Personal Trainer | Especialista em Dores Articulares",
+      },
+      {
+        property: "og:description",
+        content:
+          "Acabe com suas dores e recupere sua qualidade de vida. Metodologia comprovada, 14+ anos de experiência.",
+      },
       { property: "og:url", content: "https://odairfilhopersonal.com.br/" },
     ],
     links: [
@@ -130,9 +137,7 @@ function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-border/40 bg-background/70 border-b backdrop-blur-xl"
-          : "bg-transparent",
+        scrolled ? "border-border/40 bg-background/70 border-b backdrop-blur-xl" : "bg-transparent",
       )}
     >
       <div className="container-wide flex h-16 items-center justify-between md:h-20">
@@ -257,22 +262,24 @@ function Hero() {
             className="max-w-2xl text-base text-white/80 sm:text-lg md:text-xl animate-fade-up"
             style={{ animationDelay: "160ms" }}
           >
-            Acabe com suas dores e recupere sua qualidade de vida com acompanhamento
-            profissional e metodologia comprovada.
+            Acabe com suas dores e recupere sua qualidade de vida com acompanhamento profissional e
+            metodologia comprovada.
           </p>
 
           <ul
             className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/90 animate-fade-up"
             style={{ animationDelay: "220ms" }}
           >
-            {["14 anos de experiência", "Especialista em quadril e joelhos", "Presencial e online"].map(
-              (t) => (
-                <li key={t} className="flex items-center gap-2">
-                  <CheckCircle2 className="text-brand h-4 w-4" />
-                  {t}
-                </li>
-              ),
-            )}
+            {[
+              "14 anos de experiência",
+              "Especialista em quadril e joelhos",
+              "Presencial e online",
+            ].map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <CheckCircle2 className="text-brand h-4 w-4" />
+                {t}
+              </li>
+            ))}
           </ul>
 
           <div
@@ -347,25 +354,20 @@ function About() {
               <div className="text-xs uppercase tracking-[0.2em] text-white/70">
                 Personal Trainer · CREF
               </div>
-              <div className="font-display mt-1 text-2xl font-bold text-white">
-                Odair Filho
-              </div>
+              <div className="font-display mt-1 text-2xl font-bold text-white">Odair Filho</div>
             </div>
           </div>
         </div>
 
         <div className="reveal space-y-6">
-          <span className="text-brand text-xs font-bold uppercase tracking-[0.25em]">
-            Sobre
-          </span>
+          <span className="text-brand text-xs font-bold uppercase tracking-[0.25em]">Sobre</span>
           <h2 className="font-display text-3xl font-extrabold leading-tight md:text-5xl">
-            Mais de 14 anos transformando{" "}
-            <span className="text-gradient-brand">vidas sem dor</span>
+            Mais de 14 anos transformando <span className="text-gradient-brand">vidas sem dor</span>
           </h2>
           <p className="text-muted-foreground text-base leading-relaxed md:text-lg">
-            Há mais de 14 anos ajudando pessoas a superar dores articulares e recuperar
-            qualidade de vida através do treinamento personalizado, com metodologia que une
-            ciência do exercício e reabilitação.
+            Há mais de 14 anos ajudando pessoas a superar dores articulares e recuperar qualidade de
+            vida através do treinamento personalizado, com metodologia que une ciência do exercício
+            e reabilitação.
           </p>
 
           <ul className="grid gap-3 text-sm md:text-base">
@@ -436,8 +438,7 @@ function Services() {
           eyebrow="Serviços"
           title={
             <>
-              Treinos sob medida para{" "}
-              <span className="text-gradient-brand">o seu objetivo</span>
+              Treinos sob medida para <span className="text-gradient-brand">o seu objetivo</span>
             </>
           }
           description="Atendimento humano e técnico, com plano de treino construído a partir da sua condição atual."
@@ -461,9 +462,7 @@ function Services() {
                   {s.tag}
                 </span>
               </div>
-              <h3 className="font-display mt-6 text-2xl font-bold md:text-3xl">
-                {s.title}
-              </h3>
+              <h3 className="font-display mt-6 text-2xl font-bold md:text-3xl">{s.title}</h3>
               <p className="text-muted-foreground mt-2">{s.desc}</p>
               <ul className="mt-6 grid gap-2.5">
                 {s.benefits.map((b) => (
@@ -525,8 +524,7 @@ function Results() {
           eyebrow="Depoimentos"
           title={
             <>
-              Resultados <span className="text-gradient-brand">reais</span> de clientes
-              reais
+              Resultados <span className="text-gradient-brand">reais</span> de clientes reais
             </>
           }
           description="Histórias de quem deixou a dor para trás e recuperou a vida ativa."
@@ -641,9 +639,7 @@ function Plans() {
                 )}
               </div>
               <div className="mt-5 flex items-end gap-1">
-                <span className="font-display text-4xl font-extrabold md:text-5xl">
-                  {p.price}
-                </span>
+                <span className="font-display text-4xl font-extrabold md:text-5xl">{p.price}</span>
                 <span className="text-muted-foreground mb-1.5 text-sm">{p.period}</span>
               </div>
               <ul className="mt-6 grid flex-1 gap-3">
@@ -758,8 +754,7 @@ function Contact() {
           eyebrow="Contato"
           title={
             <>
-              Vamos conversar sobre o{" "}
-              <span className="text-gradient-brand">seu objetivo</span>
+              Vamos conversar sobre o <span className="text-gradient-brand">seu objetivo</span>
             </>
           }
           description="Responda em poucos minutos para agendar sua avaliação."
@@ -960,8 +955,8 @@ function Footer() {
             </span>
           </div>
           <p className="text-muted-foreground mt-4 max-w-xs text-sm">
-            Especialista em dores articulares. Mais de 14 anos transformando vidas em
-            Londrina-PR e online.
+            Especialista em dores articulares. Mais de 14 anos transformando vidas em Londrina-PR e
+            online.
           </p>
         </div>
 
@@ -1033,9 +1028,7 @@ function SectionHead({
 }) {
   return (
     <div className="reveal mx-auto max-w-3xl text-center">
-      <span className="text-brand text-xs font-bold uppercase tracking-[0.25em]">
-        {eyebrow}
-      </span>
+      <span className="text-brand text-xs font-bold uppercase tracking-[0.25em]">{eyebrow}</span>
       <h2 className="font-display mt-3 text-3xl font-extrabold leading-tight md:text-5xl">
         {title}
       </h2>
