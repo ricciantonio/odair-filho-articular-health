@@ -75,6 +75,21 @@ const NAV = [
 
 function HomePage() {
   useScrollReveal();
+  useEffect(() => {
+    console.log("[PageLoad] HomePage montada em", window.location.href);
+    const onError = (e: ErrorEvent) => {
+      console.error("[PageLoad] window.error:", e.message, e.filename, e.lineno, e.error);
+    };
+    const onRejection = (e: PromiseRejectionEvent) => {
+      console.error("[PageLoad] unhandledrejection:", e.reason);
+    };
+    window.addEventListener("error", onError);
+    window.addEventListener("unhandledrejection", onRejection);
+    return () => {
+      window.removeEventListener("error", onError);
+      window.removeEventListener("unhandledrejection", onRejection);
+    };
+  }, []);
   return (
     <div className="bg-background text-foreground min-h-screen overflow-x-clip">
       <Header />
