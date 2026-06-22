@@ -81,6 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Odair Filho Personal Trainer | Especialista em Dores Articulares" },
       { name: "description", content: "Personal Trainer especializado em dores articulares, quadril e joelhos. Mais de 14 anos ajudando pessoas a recuperarem qualidade de vida em Londrina-PR." },
       { name: "author", content: "Odair Filho" },
+      { name: "google-site-verification", content: "TKxpsGerfJ7aObGyK9qr-vgJTNeyLbsFxo9PfMI19fA" },
       { property: "og:title", content: "Odair Filho Personal Trainer | Especialista em Dores Articulares" },
       { property: "og:description", content: "Acabe com suas dores articulares e recupere sua qualidade de vida com metodologia comprovada. 14+ anos de experiência." },
       { property: "og:type", content: "website" },
