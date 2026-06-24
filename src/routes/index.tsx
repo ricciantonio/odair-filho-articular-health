@@ -535,6 +535,8 @@ function Plans() {
       features: ["Avaliação inicial", "Treino personalizado", "Suporte mensal"],
       cta: "Contratar",
       highlight: false,
+      message:
+        "Olá! Gostaria de começar minha transformação com o Plano Básico. Quero uma avaliação inicial e treino personalizado para dar meus primeiros passos! 💪",
     },
     {
       name: "Premium",
@@ -544,6 +546,8 @@ function Plans() {
       features: ["Tudo do Básico", "Revisões frequentes", "Suporte prioritário", "Acompanhamento completo"],
       cta: "Contratar Agora",
       highlight: true,
+      message:
+        "Olá! Quero contratar o Plano Premium! Estou comprometido com resultados reais: acompanhamento profissional completo com revisões frequentes e suporte prioritário. Quando podemos começar? 🚀",
     },
     {
       name: "VIP",
@@ -553,8 +557,11 @@ function Plans() {
       features: ["Tudo do Premium", "Atendimento exclusivo", "Planejamento avançado", "Consultoria estratégica"],
       cta: "Solicitar Contato",
       highlight: false,
+      message:
+        "Olá! Estou interessado no Plano VIP. Quero uma solução exclusiva com consultoria estratégica, planejamento avançado e atendimento VIP. Vamos conversar sobre como potencializar meus resultados? 🎯",
     },
   ];
+
   return (
     <section id="planos" className="bg-surface/40 relative py-24 md:py-32">
       <div className="container-wide">
@@ -613,9 +620,14 @@ function Plans() {
                     : "bg-surface-elevated text-foreground hover:bg-accent border border-border/70",
                 )}
               >
-                <a href={waLink} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(p.message)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {p.cta}
                 </a>
+
               </Button>
             </div>
           ))}
