@@ -1,20 +1,24 @@
 ## O que mudar
 
-Atualmente a seção Hero (atrás do título "Personal Trainer Especializado em Dores Articulares") usa `heroImg`, que mostra sua foto — a mesma que aparece na seção "Sobre", causando duplicação.
+Em `src/routes/index.tsx`, na seção **Plans** (linhas ~527-620), cada plano hoje usa o mesmo `waLink` genérico. Vou adicionar uma mensagem específica por plano e gerar o link do WhatsApp individual.
 
 ## Alterações
 
-**Arquivo:** `src/routes/index.tsx`
+**Arquivo:** `src/routes/index.tsx` (função `Plans`)
 
-1. **Hero (linha ~219-226):** trocar a imagem de fundo `heroImg` por `logoImg`.
-   - Como a logo é quadrada e pequena (não cobre o fundo bem como `object-cover`), vou ajustar para ficar centralizada com `object-contain`, com tamanho controlado e mantendo o gradiente escuro por cima para legibilidade do texto. Resultado: logo grande centralizada ao fundo, com overlay escuro.
-   - Atualizar o `alt` para "Logo Odair Filho Personal Trainer".
-   - Atualizar o `<link rel="preload">` (linha 55) para apontar para `logoImg` em vez de `heroImg`.
+1. Adicionar a propriedade `message` em cada objeto de plano:
+   - **Básico:** `"Olá! Gostaria de começar minha transformação com o Plano Básico. Quero uma avaliação inicial e treino personalizado para dar meus primeiros passos! 💪"`
+   - **Premium:** `"Olá! Quero contratar o Plano Premium! Estou comprometido com resultados reais: acompanhamento profissional completo com revisões frequentes e suporte prioritário. Quando podemos começar? 🚀"`
+   - **VIP:** `"Olá! Estou interessado no Plano VIP. Quero uma solução exclusiva com consultoria estratégica, planejamento avançado e atendimento VIP. Vamos conversar sobre como potencializar meus resultados? 🎯"`
 
-2. **Sobre (linha ~322-336):** sem alterações — sua foto (`odairImg`) continua exclusivamente aqui.
+2. Trocar `href={waLink}` por um link gerado dinamicamente:
+   ```
+   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(p.message)}`
+   ```
+   Reutilizando a constante `WHATSAPP_NUMBER` (5543991197602) já existente no arquivo.
 
-3. **Remover import não usado:** apagar `import heroImg from "@/assets/hero.jpg"` (linha 24), já que não será mais referenciado.
+3. Os demais botões (Hero, CTA flutuante, etc.) continuam usando o `waLink` genérico — sem alterações.
 
-## Observação
+## Resultado
 
-Não vou apagar o arquivo `src/assets/hero.jpg` para não quebrar nada caso queira reutilizá-lo depois. Se quiser que eu remova também, é só me dizer.
+Cada botão da seção Planos abre o WhatsApp com a mensagem personalizada do respectivo plano.
