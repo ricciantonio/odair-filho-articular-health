@@ -355,6 +355,7 @@ function About() {
                 Personal Trainer · CREF
               </div>
               <div className="font-display mt-1 text-2xl font-bold text-white">Odair Filho</div>
+              <div className="font-display text-lg font-bold text-white/90">CREF 021795</div>
             </div>
           </div>
         </div>
