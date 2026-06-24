@@ -21,7 +21,6 @@ import {
   Users,
   X,
 } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
 import odairImg from "@/assets/odair.jpg";
 import logoImg from "@/assets/logo.png";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -52,7 +51,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://odairfilhopersonal.com.br/" },
-      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" } as never,
+      { rel: "preload", as: "image", href: logoImg, fetchpriority: "high" } as never,
     ],
   }),
   component: HomePage,
@@ -216,12 +215,13 @@ function Header() {
 function Hero() {
   return (
     <section id="inicio" className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-24 md:pt-28">
+      <div aria-hidden className="absolute inset-0 -z-20 bg-background" />
       <img
-        src={heroImg}
-        alt="Personal trainer em treinamento"
-        width={1920}
-        height={1080}
-        className="absolute inset-0 -z-20 h-full w-full object-cover"
+        src={logoImg}
+        alt="Logo Odair Filho Personal Trainer"
+        width={1024}
+        height={1024}
+        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-30"
         fetchPriority="high"
       />
       <div aria-hidden className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
