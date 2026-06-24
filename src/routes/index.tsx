@@ -620,9 +620,14 @@ function Plans() {
                     : "bg-surface-elevated text-foreground hover:bg-accent border border-border/70",
                 )}
               >
-                <a href={waLink} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(p.message)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {p.cta}
                 </a>
+
               </Button>
             </div>
           ))}
