@@ -536,7 +536,7 @@ function Plans() {
       cta: "Contratar",
       highlight: false,
       message:
-        "Olá! Gostaria de começar minha transformação com o Plano Básico. Quero uma avaliação inicial e treino personalizado para dar meus primeiros passos! 💪",
+        "Olá! Gostaria de começar minha transformação com o Plano Básico. Quero uma avaliação inicial e treino personalizado para dar meus primeiros passos!",
     },
     {
       name: "Premium",
@@ -547,7 +547,7 @@ function Plans() {
       cta: "Contratar Agora",
       highlight: true,
       message:
-        "Olá! Quero contratar o Plano Premium! Estou comprometido com resultados reais: acompanhamento profissional completo com revisões frequentes e suporte prioritário. Quando podemos começar? 🚀",
+        "Olá! Quero contratar o Plano Premium! Estou comprometido com resultados reais: acompanhamento profissional completo com revisões frequentes e suporte prioritário. Quando podemos começar?",
     },
     {
       name: "VIP",
@@ -558,7 +558,7 @@ function Plans() {
       cta: "Solicitar Contato",
       highlight: false,
       message:
-        "Olá! Estou interessado no Plano VIP. Quero uma solução exclusiva com consultoria estratégica, planejamento avançado e atendimento VIP. Vamos conversar sobre como potencializar meus resultados? 🎯",
+        "Olá! Estou interessado no Plano VIP. Quero uma solução exclusiva com consultoria estratégica, planejamento avançado e atendimento VIP. Vamos conversar sobre como potencializar meus resultados?",
     },
   ];
 
@@ -627,7 +627,6 @@ function Plans() {
                 >
                   {p.cta}
                 </a>
-
               </Button>
             </div>
           ))}
