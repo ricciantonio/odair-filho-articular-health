@@ -388,6 +388,8 @@ function Services() {
       title: "Consultoria Online",
       desc: "Programa completo para acompanhamento remoto, onde você estiver.",
       benefits: ["Treino personalizado", "Suporte contínuo", "Ajustes periódicos", "Flexibilidade de horários"],
+      message:
+        "Olá! Gostaria de saber mais sobre a Consultoria Online. Quero um programa personalizado com acompanhamento remoto. Como funciona?",
     },
     {
       icon: Dumbbell,
@@ -395,6 +397,8 @@ function Services() {
       title: "Treino Presencial",
       desc: "Acompanhamento individual presencial em Londrina-PR.",
       benefits: ["Correção técnica", "Atendimento individual", "Evolução monitorada", "Resultados mais rápidos"],
+      message:
+        "Olá! Estou interessado no Treino Presencial em Londrina-PR. Gostaria de agendar uma avaliação e saber mais sobre como funciona o atendimento. Quando você tem disponibilidade?",
     },
   ];
   return (
@@ -439,7 +443,9 @@ function Services() {
                 ))}
               </ul>
               <Button
-                onClick={() => window.open(waLink, "_blank")}
+                onClick={() =>
+                  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(s.message)}`, "_blank")
+                }
                 variant="ghost"
                 className="hover:bg-brand/10 hover:text-brand mt-7 h-11 w-full rounded-lg border border-border/70 font-semibold"
               >
