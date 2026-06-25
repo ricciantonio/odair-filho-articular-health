@@ -1,13 +1,14 @@
-## Atualizar @tanstack/react-start
-
-Atualizar o pacote `@tanstack/react-start` para a versão mais recente para resolver as vulnerabilidades de `undici`, `js-yaml` e `@tanstack/start-server-core`.
+## Verificar builds e gerar dist de produção
 
 ### Passos
 
-1. Rodar `bun add @tanstack/react-start@latest` (e atualizar pacotes relacionados do TanStack se necessário para manter compatibilidade de versão).
-2. Verificar que o build/dev continua funcionando.
-3. Confirmar no painel de Security que as findings sumiram.
+1. Rodar `bun run build:dev` e capturar o erro completo (o trecho enviado está truncado em "rendering chunks..." — preciso ver a mensagem de erro real do Nitro/Vite).
+2. Rodar `bun run build` (build de produção) e capturar saída.
+3. Se houver erro, diagnosticar e corrigir (provavelmente algo relacionado ao bump do `@tanstack/react-start` para 1.168.26 ou à remoção da rota `sitemap[.]xml.ts`).
+4. Confirmar que `dist/` foi gerado com `dist/client` e o worker do Cloudflare.
 
-### Observação
+### Saída esperada
 
-Se a atualização introduzir incompatibilidade (breaking change entre minors do TanStack Start), faço o ajuste no código de boot (`src/router.tsx`, `src/start.ts`, `src/server.ts`) seguindo o padrão atual.
+- `bun run build:dev` passa.
+- `bun run build` passa.
+- Diretório `dist/` populado.
