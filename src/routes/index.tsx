@@ -439,7 +439,7 @@ function Services() {
                 ))}
               </ul>
               <Button
-                asChild
+                onClick={() => window.open(waLink, "_blank")}
                 variant="ghost"
                 className="hover:bg-brand/10 hover:text-brand mt-7 h-11 w-full rounded-lg border border-border/70 font-semibold"
               >
