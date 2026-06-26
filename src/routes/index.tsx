@@ -388,20 +388,32 @@ function Services() {
     {
       icon: Activity,
       tag: "Online",
-      title: "Consultoria Online",
+      title: "Consultoria Online Básico",
       desc: "Programa completo para acompanhamento remoto, onde você estiver.",
-      benefits: ["Treino personalizado", "Suporte contínuo", "Ajustes periódicos", "Flexibilidade de horários"],
+      benefits: [
+        "Troca de treino mensal",
+        "Uso de aplicativo com vídeo dos exercícios",
+        "Ajustes periódicos",
+        "Flexibilidade de horários",
+        "Pode tirar dúvidas através do whatsapp.",
+      ],
       message:
-        "Olá! Gostaria de saber mais sobre a Consultoria Online. Quero um programa personalizado com acompanhamento remoto. Como funciona?",
+        "Olá! Gostaria de saber mais sobre a Consultoria Básica.Tenho interesse em conhecer como funciona a consultoria online básica, quais são os benefícios e como posso começar. Podemos marcar uma conversa?",
     },
     {
-      icon: Dumbbell,
-      tag: "Presencial",
-      title: "Treino Presencial",
-      desc: "Acompanhamento individual presencial em Londrina-PR.",
-      benefits: ["Correção técnica", "Atendimento individual", "Evolução monitorada", "Resultados mais rápidos"],
+      icon: Activity,
+      tag: "Online",
+      title: "Consultoria Online Avançado",
+      desc: "Programa completo para acompanhamento remoto, onde você estiver",
+      benefits: [
+        "Troca de treino mensal",
+        "Uso de aplicativo com vídeo dos exercícios",
+        "Pode tirar dúvidas através do whatsapp",
+        "Uma aula presencial",
+        "Sob consulta de horário",
+      ],
       message:
-        "Olá! Estou interessado no Treino Presencial em Londrina-PR. Gostaria de agendar uma avaliação e saber mais sobre como funciona o atendimento. Quando você tem disponibilidade?",
+        "Olá! Tenho interesse na Consultoria Avançada. Gostaria de entender melhor como funciona a consultoria avançada, o planejamento detalhado e os resultados que posso esperar. Quando podemos conversar sobre isso?",
     },
   ];
   return (
