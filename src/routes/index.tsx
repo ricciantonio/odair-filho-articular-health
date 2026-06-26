@@ -53,7 +53,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://odairfilhopersonal.com.br/" },
-      { rel: "preload", as: "image", href: logoImg, fetchpriority: "high" } as never,
+      { rel: "preload", as: "image", href: heroLogoImg, fetchpriority: "high" } as never,
     ],
   }),
   component: HomePage,
