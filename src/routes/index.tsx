@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import odairImg from "@/assets/odair.jpg";
 import logoImg from "@/assets/logo.png";
+import heroLogoAsset from "@/assets/logo-hero.png.asset.json";
+const heroLogoImg = heroLogoAsset.url;
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
