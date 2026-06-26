@@ -468,10 +468,10 @@ function Services() {
 function Results() {
   const data = [
     {
-      name: "Maria Silva",
-      problem: "Dor intensa no joelho",
-      result: "Voltei a caminhar sem dor após 3 meses de treino.",
-      initials: "MS",
+      name: "Tatiana Adam",
+      problem: "Dor no joelho",
+      result: "Zero dor, melhora nos exercícios e no dia a dia.",
+      initials: "TA",
     },
     {
       name: "Fernanda Beffa",
@@ -481,22 +481,23 @@ function Results() {
       initials: "FB",
     },
     {
+      name: "Lucas Mendes",
+      problem: "Tendinopatia do tibial posterior",
+      result:
+        "Fiquei meses com canelite e sem evoluir na corrida até conhecer o trabalho do Odair. Ele criou treinos baseados em estudos científicos, que eliminaram minha dor e melhoraram meu desempenho. Com sua orientação, consegui treinar longas distâncias e completar uma maratona com estabilidade, sem dores e superando minhas expectativas.",
+      initials: "LM",
+    },
+    {
+      name: "Luiggi Bonezzi",
+      problem: "Lesão Menisco",
+      result: "As pernas estão bem mais fortes. Praticamente sem dor.",
+      initials: "LGB",
+    },
+    {
       name: "Carlos Mendes",
       problem: "Dor crônica no quadril",
       result: "Recuperei minha mobilidade e voltei a correr.",
       initials: "CM",
-    },
-    {
-      name: "Ana Beatriz",
-      problem: "Lombalgia recorrente",
-      result: "Acabaram as crises e a postura melhorou muito.",
-      initials: "AB",
-    },
-    {
-      name: "Ricardo Lima",
-      problem: "Pós-cirurgia de joelho",
-      result: "Retorno seguro às atividades em tempo recorde.",
-      initials: "RL",
     },
   ];
   return (
