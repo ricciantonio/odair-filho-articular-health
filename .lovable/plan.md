@@ -1,14 +1,17 @@
-## Verificar builds e gerar dist de produção
+## Ajuste do fundo do Hero no tema dark
 
-### Passos
+**Problema:** A nova arte usada no fundo da seção "Início" tem áreas brancas/claras. No tema claro fica bonita, mas no tema dark essas partes aparecem como "bordas brancas" ao redor do logo.
 
-1. Rodar `bun run build:dev` e capturar o erro completo (o trecho enviado está truncado em "rendering chunks..." — preciso ver a mensagem de erro real do Nitro/Vite).
-2. Rodar `bun run build` (build de produção) e capturar saída.
-3. Se houver erro, diagnosticar e corrigir (provavelmente algo relacionado ao bump do `@tanstack/react-start` para 1.168.26 ou à remoção da rota `sitemap[.]xml.ts`).
-4. Confirmar que `dist/` foi gerado com `dist/client` e o worker do Cloudflare.
+**Solução:** Renderizar duas imagens no Hero e alternar por tema:
+- **Tema claro:** mantém a arte atual (`heroLogoImg` — ouroboros + texto sobre fundo claro).
+- **Tema dark:** usa o logo já existente com fundo transparente (`@/assets/logo.png`), que não tem áreas brancas.
 
-### Saída esperada
+### Mudanças
 
-- `bun run build:dev` passa.
-- `bun run build` passa.
-- Diretório `dist/` populado.
+Em `src/routes/index.tsx`, dentro de `Hero()`:
+- Substituir o único `<img src={heroLogoImg}>` por dois `<img>`:
+  - Um visível só no light: `className="... block dark:hidden ... opacity-25"` usando `heroLogoImg`.
+  - Um visível só no dark: `className="... hidden dark:block ... opacity-30"` usando `logoImg` (transparente).
+- Manter posicionamento, `object-contain`, `-z-20` e `fetchPriority="high"` em ambos.
+
+Nenhuma outra seção é alterada.
