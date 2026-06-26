@@ -223,8 +223,14 @@ function Hero() {
         alt="Logo Odair Filho Personal Trainer"
         width={3368}
         height={2382}
-        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-20 dark:opacity-25"
+        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-20 block dark:hidden"
         fetchPriority="high"
+      />
+      <img
+        src={logoImg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 -z-20 hidden h-full w-full object-contain object-center opacity-30 dark:block"
       />
       <div aria-hidden className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div
