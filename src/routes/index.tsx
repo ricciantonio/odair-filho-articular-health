@@ -219,11 +219,11 @@ function Hero() {
     <section id="inicio" className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-24 md:pt-28">
       <div aria-hidden className="absolute inset-0 -z-20 bg-background" />
       <img
-        src={logoImg}
+        src={heroLogoImg}
         alt="Logo Odair Filho Personal Trainer"
-        width={1024}
-        height={1024}
-        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-30"
+        width={3368}
+        height={2382}
+        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-20 dark:opacity-25"
         fetchPriority="high"
       />
       <div aria-hidden className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
