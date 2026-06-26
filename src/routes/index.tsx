@@ -474,6 +474,13 @@ function Results() {
       initials: "MS",
     },
     {
+      name: "Fernanda Beffa"
+      problem: "Tendinopatia do glúteo médio"
+      result: "Após minha segunda gestação, fiquei com dores crônicas no quadril, que pioraram com o tempo devido ao sedentarismo. A dor era constante e os remédios já não ajudavam. Procurei o Odair, que avaliou meus exames e criou um treino específico para minha condição. Em poucas semanas, fiquei sem dor. Hoje pratico esportes de impacto e faço minhas atividades normalmente, sem limitações ou incômodos."
+      initials: "FB"
+    },
+
+    {
       name: "Carlos Mendes",
       problem: "Dor crônica no quadril",
       result: "Recuperei minha mobilidade e voltei a correr.",
