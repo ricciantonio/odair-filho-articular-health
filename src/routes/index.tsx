@@ -14,6 +14,7 @@ import {
   Moon,
   Phone,
   Send,
+  ShieldCheck,
   Star,
   Sun,
   Target,
