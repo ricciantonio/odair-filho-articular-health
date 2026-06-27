@@ -20,7 +20,6 @@ import {
   TrendingUp,
   Users,
   X,
-  ShieldCheck,
 } from "lucide-react";
 import odairImg from "@/assets/odair.jpg";
 import logoImg from "@/assets/logo.png";
@@ -241,13 +240,13 @@ function Hero() {
             Atendendo em Londrina-PR · Online em todo Brasil
           </div>
           <h1
-            className="font-display text-foreground text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up"
+            className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up"
             style={{ animationDelay: "80ms" }}
           >
             Personal Trainer Especializado em <span className="text-gradient-brand">Dores Articulares</span>
           </h1>
           <p
-            className="text-foreground/80 max-w-2xl text-base sm:text-lg md:text-xl animate-fade-up"
+            className="max-w-2xl text-base text-white/80 sm:text-lg md:text-xl animate-fade-up"
             style={{ animationDelay: "160ms" }}
           >
             Acabe com suas dores e recupere sua qualidade de vida com acompanhamento profissional e metodologia
@@ -255,7 +254,7 @@ function Hero() {
           </p>
 
           <ul
-            className="text-foreground/90 flex flex-wrap gap-x-6 gap-y-2 text-sm animate-fade-up"
+            className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/90 animate-fade-up"
             style={{ animationDelay: "220ms" }}
           >
             {["14 anos de experiência", "Especialista em quadril e joelhos", "Presencial e online"].map((t) => (
@@ -273,7 +272,7 @@ function Hero() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-brand text-primary-foreground h-12 rounded-lg px-7 text-base font-semibold shadow-brand-glow hover:opacity-95"
+              className="bg-gradient-brand h-12 rounded-lg px-7 text-base font-semibold shadow-brand-glow hover:opacity-95"
             >
               <a href="#contato">Agendar Avaliação Gratuita</a>
             </Button>
@@ -281,14 +280,13 @@ function Hero() {
               asChild
               size="lg"
               variant="outline"
-              className="border-border/60 bg-background/40 text-foreground hover:bg-accent hover:text-foreground h-12 rounded-lg px-7 text-base font-semibold backdrop-blur"
+              className="h-12 rounded-lg border-white/30 bg-white/5 px-7 text-base font-semibold text-white backdrop-blur hover:bg-white/15 hover:text-white"
             >
               <a href={waLink} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" /> Falar no WhatsApp
               </a>
             </Button>
           </div>
-
         </div>
 
         <div
@@ -334,9 +332,9 @@ function About() {
               className="aspect-[4/5] h-full w-full object-cover"
             />
             <div className="from-background/90 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-6">
-              <div className="text-xs uppercase tracking-[0.2em] text-foreground/70">Personal Trainer</div>
-              <div className="font-display mt-1 text-2xl font-bold text-foreground">Odair Filho</div>
-              <div className="font-display text-lg font-bold text-primary">Cref 021795</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-white/70">Personal Trainer</div>
+              <div className="font-display mt-1 text-2xl font-bold text-white">Odair Filho</div>
+              <div className="font-display text-lg font-bold text-white/90">Cref 021795</div>
             </div>
           </div>
         </div>
@@ -411,9 +409,9 @@ function Services() {
         "Avaliação inicial (Online)",
         "Troca de treino mensal",
         "Uso de aplicativo com vídeo dos exercícios",
-        "Pode tirar dúvidas através do whatsapp",
+        "Ajustes periódicos",
         "Uma aula presencial (sob consulta de horário)",
-        "Sob consulta de horário",
+        "Pode tirar dúvidas através do whatsapp",
       ],
       message: "Olá! Tenho interesse na Consultoria Avançada. Qual é a melhor forma de começar?",
     },
@@ -610,7 +608,7 @@ function Plans() {
   ];
 
   // Função para formatar moeda brasileira
-  const formatPrice = (price: number) => {
+  const formatPrice = (price) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
