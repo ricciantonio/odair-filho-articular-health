@@ -241,13 +241,13 @@ function Hero() {
             Atendendo em Londrina-PR · Online em todo Brasil
           </div>
           <h1
-            className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up"
+            className="font-display text-foreground text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up"
             style={{ animationDelay: "80ms" }}
           >
             Personal Trainer Especializado em <span className="text-gradient-brand">Dores Articulares</span>
           </h1>
           <p
-            className="max-w-2xl text-base text-white/80 sm:text-lg md:text-xl animate-fade-up"
+            className="text-foreground/80 max-w-2xl text-base sm:text-lg md:text-xl animate-fade-up"
             style={{ animationDelay: "160ms" }}
           >
             Acabe com suas dores e recupere sua qualidade de vida com acompanhamento profissional e metodologia
@@ -255,7 +255,7 @@ function Hero() {
           </p>
 
           <ul
-            className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/90 animate-fade-up"
+            className="text-foreground/90 flex flex-wrap gap-x-6 gap-y-2 text-sm animate-fade-up"
             style={{ animationDelay: "220ms" }}
           >
             {["14 anos de experiência", "Especialista em quadril e joelhos", "Presencial e online"].map((t) => (
@@ -273,7 +273,7 @@ function Hero() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-brand h-12 rounded-lg px-7 text-base font-semibold shadow-brand-glow hover:opacity-95"
+              className="bg-gradient-brand text-primary-foreground h-12 rounded-lg px-7 text-base font-semibold shadow-brand-glow hover:opacity-95"
             >
               <a href="#contato">Agendar Avaliação Gratuita</a>
             </Button>
@@ -281,13 +281,14 @@ function Hero() {
               asChild
               size="lg"
               variant="outline"
-              className="h-12 rounded-lg border-white/30 bg-white/5 px-7 text-base font-semibold text-white backdrop-blur hover:bg-white/15 hover:text-white"
+              className="border-border/60 bg-background/40 text-foreground hover:bg-accent hover:text-foreground h-12 rounded-lg px-7 text-base font-semibold backdrop-blur"
             >
               <a href={waLink} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" /> Falar no WhatsApp
               </a>
             </Button>
           </div>
+
         </div>
 
         <div
