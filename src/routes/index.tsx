@@ -14,7 +14,6 @@ import {
   Moon,
   Phone,
   Send,
-  ShieldCheck,
   Star,
   Sun,
   Target,
@@ -224,7 +223,7 @@ function Hero() {
         alt="Logo Odair Filho Personal Trainer"
         width={3368}
         height={2382}
-        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-20 dark:opacity-90"
+        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-20 dark:opacity-30"
         fetchPriority="high"
       />
 
@@ -397,7 +396,7 @@ function Services() {
         "Uso de aplicativo com vídeo dos exercícios",
         "Ajustes periódicos",
         "Flexibilidade de horários",
-        "Pode tirar dúvidas através do whatsapp.",
+        "Pode tirar dúvidas através do whatsapp",
       ],
       message: "Olá! Gostaria de saber mais sobre a Consultoria Básica. Como funciona e como posso começar?",
     },
@@ -600,7 +599,7 @@ function Plans() {
   ];
 
   // Função para formatar moeda brasileira
-  const formatPrice = (price: number) => {
+  const formatPrice = (price) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
