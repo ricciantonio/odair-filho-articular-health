@@ -572,14 +572,7 @@ function Plans() {
       period: "3 meses",
       monthlyPrice: 299 / 3,
       savings: 360 - 299,
-      features: [
-        "Avaliação inicial (online)",
-        "Troca de treino mensal",
-        "Uso de aplicativo com vídeo dos exercícios",
-        "Ajustes periódicos",
-        "Flexibilidade de horários",
-        "Pode tirar dúvidas através do whatsapp.",
-      ],
+      features: ["Avaliação inicial", "Treino personalizado", "Suporte mensal"],
       cta: "Contratar",
       highlight: false,
       message: "Olá! Gostaria de começar minha transformação com o Plano Básico por R$ 299,00 em 3 meses!",
@@ -593,12 +586,11 @@ function Plans() {
       monthlyPrice: 510 / 3,
       savings: 600 - 510,
       features: [
-        "Avaliação inicial (Online)",
-        "Troca de treino mensal",
-        "Uso de aplicativo com vídeo dos exercícios",
-        "Pode tirar dúvidas através do whatsapp",
-        "Uma aula presencial (sob consulta de horário)",
-        "Sob consulta de horário",
+        "Tudo do Básico",
+        "Revisões frequentes",
+        "Suporte prioritário",
+        "Acompanhamento completo",
+        "1 aula presencial",
       ],
       cta: "Contratar Agora",
       highlight: true,
@@ -607,7 +599,7 @@ function Plans() {
   ];
 
   // Função para formatar moeda brasileira
-  const formatPrice = (price: number) => {
+  const formatPrice = (price) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
@@ -702,6 +694,22 @@ function Plans() {
                 </Button>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* ✅ DIREITO DE ARREPENDIMENTO - Recomendação Final */}
+        <div className="reveal mt-12 flex justify-center">
+          <div className="max-w-2xl w-full rounded-xl border border-green-500/30 bg-gradient-to-r from-green-500/5 to-emerald-500/5 p-6 md:p-8 text-center">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <ShieldCheck className="h-5 w-5 text-green-600" />
+              <h4 className="font-semibold text-green-700 text-sm md:text-base">Compra Protegida</h4>
+            </div>
+            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+              Você tem <span className="font-semibold text-foreground">7 dias para arrependimento</span>, conforme
+              garantido pelo{" "}
+              <span className="font-semibold text-foreground">Artigo 49 do Código de Defesa do Consumidor (CDC)</span>.
+              Desista sem necessidade de justificativa.
+            </p>
           </div>
         </div>
       </div>
