@@ -572,7 +572,14 @@ function Plans() {
       period: "3 meses",
       monthlyPrice: 299 / 3,
       savings: 360 - 299,
-      features: ["Avaliação inicial", "Treino personalizado", "Suporte mensal"],
+      features: [
+        "Avaliação inicial (online)",
+        "Troca de treino mensal",
+        "Uso de aplicativo com vídeo dos exercícios",
+        "Ajustes periódicos",
+        "Flexibilidade de horários",
+        "Pode tirar dúvidas através do whatsapp.",
+      ],
       cta: "Contratar",
       highlight: false,
       message: "Olá! Gostaria de começar minha transformação com o Plano Básico por R$ 299,00 em 3 meses!",
@@ -586,11 +593,12 @@ function Plans() {
       monthlyPrice: 510 / 3,
       savings: 600 - 510,
       features: [
-        "Tudo do Básico",
-        "Revisões frequentes",
-        "Suporte prioritário",
-        "Acompanhamento completo",
-        "1 aula presencial",
+        "Avaliação inicial (Online)",
+        "Troca de treino mensal",
+        "Uso de aplicativo com vídeo dos exercícios",
+        "Pode tirar dúvidas através do whatsapp",
+        "Uma aula presencial (sob consulta de horário)",
+        "Sob consulta de horário",
       ],
       cta: "Contratar Agora",
       highlight: true,
@@ -599,7 +607,7 @@ function Plans() {
   ];
 
   // Função para formatar moeda brasileira
-  const formatPrice = (price: number) => {
+  const formatPrice = (price) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
