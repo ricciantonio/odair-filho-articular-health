@@ -398,8 +398,7 @@ function Services() {
         "Flexibilidade de horários",
         "Pode tirar dúvidas através do whatsapp.",
       ],
-      message:
-        "Olá! Gostaria de saber mais sobre a Consultoria Básica. Como funciona e como posso começar?",
+      message: "Olá! Gostaria de saber mais sobre a Consultoria Básica. Como funciona e como posso começar?",
     },
     {
       icon: Activity,
@@ -414,8 +413,7 @@ function Services() {
         "Uma aula presencial (sob consulta de horário)",
         "Sob consulta de horário",
       ],
-      message:
-        "Olá! Tenho interesse na Consultoria Avançada. Qual é a melhor forma de começar?",
+      message: "Olá! Tenho interesse na Consultoria Avançada. Qual é a melhor forma de começar?",
     },
   ];
   return (
@@ -510,13 +508,15 @@ function Results() {
     {
       name: "Gilberto Soares",
       problem: "Síndrome do Impacto Femoroacetabular",
-      result: "Me chamo Gilberto Soares, e contratei o Personal Trainee Odair devido a uma artrose do lado esquerdo do quadril, impacto fêmoro acetábulo (IFA) o que provoca dores intensas. Após os treinos e acompanhamento do Odair, obtive melhoras significativas, mais mobilidade e redução das dores.",
+      result:
+        "Me chamo Gilberto Soares, e contratei o Personal Trainee Odair devido a uma artrose do lado esquerdo do quadril, impacto fêmoro acetábulo (IFA) o que provoca dores intensas. Após os treinos e acompanhamento do Odair, obtive melhoras significativas, mais mobilidade e redução das dores.",
       initials: "GS",
     },
     {
       name: "Ricardo Souza",
       problem: "Hérnia de disco L4-L5",
-      result: "No começo era uma fuga do sedentarismo e do sobrepeso. Depois, com o avanço da idade e a descoberta de uma hérnia de disco,surgiu também a necessidade de fortalecer o corpo para diminuir os incômodos. Hoje, o resultado é uma qualidade de vida adequada para minha idade e um alívio nas limitações que fazem parte do meu cotidiano. Sem a parceria e o acompanhamento do Odair, seria muito mais difícil lidar com as dores crônicas no dia a dia. Sinto uma evolução constante e eficaz no meu treino e tratamento.",
+      result:
+        "No começo era uma fuga do sedentarismo e do sobrepeso. Depois, com o avanço da idade e a descoberta de uma hérnia de disco,surgiu também a necessidade de fortalecer o corpo para diminuir os incômodos. Hoje, o resultado é uma qualidade de vida adequada para minha idade e um alívio nas limitações que fazem parte do meu cotidiano. Sem a parceria e o acompanhamento do Odair, seria muito mais difícil lidar com as dores crônicas no dia a dia. Sinto uma evolução constante e eficaz no meu treino e tratamento.",
       initials: "RS",
     },
   ];
@@ -567,16 +567,12 @@ function Plans() {
     {
       name: "Plano Básico",
       tag: "Comece agora",
-      originalPrice: 360, // Preço original por mês
-      price: 299.00, // Preço com desconto por 3 meses
-      period: "por 3 meses", // ✅ Deixa claro o período
-      monthlyPrice: (299 / 3).toFixed(2), // R$ 99.67/mês (automático)
-      savings: (360 - 299).toFixed(2), // Economia total
-      features: [
-        "Avaliação inicial",
-        "Treino personalizado",
-        "Suporte mensal"
-      ],
+      price: 299.0,
+      originalPrice: 360,
+      period: "3 meses",
+      monthlyPrice: 299 / 3,
+      savings: 360 - 299,
+      features: ["Avaliação inicial", "Treino personalizado", "Suporte mensal"],
       cta: "Contratar",
       highlight: false,
       message: "Olá! Gostaria de começar minha transformação com o Plano Básico por R$ 299,00 em 3 meses!",
@@ -584,23 +580,31 @@ function Plans() {
     {
       name: "Plano Avançado",
       tag: "Mais Popular",
-      originalPrice: 600, // Preço original por mês
-      price: 510.00, // Preço com desconto por 3 meses
-      period: "por 3 meses",
-      monthlyPrice: (510 / 3).toFixed(2), // R$ 170/mês (automático)
-      savings: (600 - 510).toFixed(2), // Economia total
+      price: 510.0,
+      originalPrice: 600,
+      period: "3 meses",
+      monthlyPrice: 510 / 3,
+      savings: 600 - 510,
       features: [
         "Tudo do Básico",
         "Revisões frequentes",
         "Suporte prioritário",
         "Acompanhamento completo",
-        "1 aula presencial"
+        "1 aula presencial",
       ],
       cta: "Contratar Agora",
       highlight: true,
       message: "Olá! Quero contratar o Plano Avançado por R$ 510,00 em 3 meses!",
-    }
+    },
   ];
+
+  // Função para formatar moeda brasileira
+  const formatPrice = (price) => {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(price);
+  };
 
   return (
     <section id="planos" className="bg-surface/40 relative py-24 md:py-32">
@@ -614,75 +618,83 @@ function Plans() {
           }
           description="Acompanhamento profissional em diferentes níveis de proximidade."
         />
-        <div className="reveal mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {plans.map((p) => (
-            <div
-              key={p.name}
-              className={cn(
-                "relative flex flex-col rounded-2xl border p-7 transition md:p-8",
-                p.highlight
-                  ? "border-[color:var(--brand)] bg-background shadow-brand-glow lg:-translate-y-3 lg:scale-[1.02]"
-                  : "border-border/60 bg-background hover:-translate-y-1",
-              )}
-            >
-              {p.highlight && (
-                <div className="bg-gradient-brand absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-brand-glow">
-                  {p.tag}
-                </div>
-              )}
-              <div className="flex items-center justify-between">
-                <h3 className="font-display text-2xl font-bold">{p.name}</h3>
-                {!p.highlight && (
-                  <span className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">{p.tag}</span>
-                )}
-              </div>
 
-              {/* ✅ PREÇO REFATORADO */}
-              <div className="mt-5 flex flex-col gap-2">
-                <div className="flex items-end gap-2">
-                  <span className="font-display text-4xl font-extrabold md:text-5xl">
-                    R$ {p.price.toFixed(2).replace(".", ",")}
-                  </span>
-                  <span className="text-muted-foreground text-sm">{p.period}</span>
-                </div>
-                
-                {/* Exibe o preço mensal e economia */}
-                <div className="text-xs text-muted-foreground space-y-1">
-                  <p>~R$ {p.monthlyPrice.replace(".", ",")} por mês</p>
-                  <p className="text-green-600 font-semibold">Economize R$ {p.savings.replace(".", ",")}</p>
-                </div>
-              </div>
-
-              <ul className="mt-6 grid flex-1 gap-3">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm">
-                    <CheckCircle2
-                      className={cn("mt-0.5 h-4 w-4 shrink-0", p.highlight ? "text-brand" : "text-foreground/70")}
-                    />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <Button
-                asChild
+        {/* ✅ Grid centralizado com 2 colunas */}
+        <div className="reveal mt-14 flex justify-center">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-4xl">
+            {plans.map((p) => (
+              <div
+                key={p.name}
                 className={cn(
-                  "mt-8 h-12 w-full rounded-lg font-semibold",
+                  "relative flex flex-col rounded-2xl border p-7 transition md:p-8 text-center",
                   p.highlight
-                    ? "bg-gradient-brand text-white shadow-brand-glow hover:opacity-95"
-                    : "bg-surface-elevated text-foreground hover:bg-accent border border-border/70",
+                    ? "border-[color:var(--brand)] bg-background shadow-brand-glow md:scale-[1.02]"
+                    : "border-border/60 bg-background hover:-translate-y-1",
                 )}
               >
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(p.message)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                {p.highlight && (
+                  <div className="bg-gradient-brand absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-3.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-brand-glow">
+                    {p.tag}
+                  </div>
+                )}
+
+                {/* Título e tag */}
+                <div className="flex flex-col items-center gap-1.5">
+                  <h3 className="font-display text-2xl font-bold">{p.name}</h3>
+                  {!p.highlight && (
+                    <span className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">
+                      {p.tag}
+                    </span>
+                  )}
+                </div>
+
+                {/* ✅ PREÇO CLEAN - Tudo em uma linha */}
+                <div className="mt-6 flex flex-col items-center gap-2">
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-display text-5xl md:text-6xl font-extrabold">{formatPrice(p.price)}</span>
+                    <span className="text-muted-foreground text-sm font-medium">por {p.period}</span>
+                  </div>
+
+                  {/* Preço mensal e economia */}
+                  <div className="text-xs text-muted-foreground space-y-1">
+                    <p>~{formatPrice(p.monthlyPrice)} por mês</p>
+                    <p className="text-green-600 font-semibold">Economize {formatPrice(p.savings)}</p>
+                  </div>
+                </div>
+
+                {/* Features */}
+                <ul className="mt-6 grid flex-1 gap-3">
+                  {p.features.map((f) => (
+                    <li key={f} className="flex items-center justify-center gap-2.5 text-sm">
+                      <CheckCircle2
+                        className={cn("h-4 w-4 shrink-0", p.highlight ? "text-brand" : "text-foreground/70")}
+                      />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <Button
+                  asChild
+                  className={cn(
+                    "mt-8 h-12 w-full rounded-lg font-semibold",
+                    p.highlight
+                      ? "bg-gradient-brand text-white shadow-brand-glow hover:opacity-95"
+                      : "bg-surface-elevated text-foreground hover:bg-accent border border-border/70",
+                  )}
                 >
-                  {p.cta}
-                </a>
-              </Button>
-            </div>
-          ))}
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(p.message)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {p.cta}
+                  </a>
+                </Button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
