@@ -391,6 +391,7 @@ function Services() {
       title: "Consultoria Online Básico",
       desc: "Programa completo para acompanhamento remoto, onde você estiver.",
       benefits: [
+        "Avaliação inicial (online)"
         "Troca de treino mensal",
         "Uso de aplicativo com vídeo dos exercícios",
         "Ajustes periódicos",
@@ -404,12 +405,13 @@ function Services() {
       icon: Activity,
       tag: "Online",
       title: "Consultoria Online Avançado",
-      desc: "Programa completo para acompanhamento remoto, onde você estiver",
+      desc: "Programa completo para acompanhamento remoto, onde você estiver.",
       benefits: [
+        "Avaliação inicial (Online)"
         "Troca de treino mensal",
         "Uso de aplicativo com vídeo dos exercícios",
         "Pode tirar dúvidas através do whatsapp",
-        "Uma aula presencial",
+        "Uma aula presencial (sob consulta de horário)",
         "Sob consulta de horário",
       ],
       message:
