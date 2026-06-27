@@ -20,6 +20,7 @@ import {
   TrendingUp,
   Users,
   X,
+  ShieldCheck,
 } from "lucide-react";
 import odairImg from "@/assets/odair.jpg";
 import logoImg from "@/assets/logo.png";
@@ -608,7 +609,7 @@ function Plans() {
   ];
 
   // Função para formatar moeda brasileira
-  const formatPrice = (price) => {
+  const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
