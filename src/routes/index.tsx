@@ -673,7 +673,7 @@ function Plans() {
                     : "bg-surface-elevated text-foreground hover:bg-accent border border-border/70",
                 )}
               >
-                
+                <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(p.message)}`}
                   target="_blank"
                   rel="noopener noreferrer"
