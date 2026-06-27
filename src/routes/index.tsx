@@ -389,9 +389,9 @@ function Services() {
       icon: Activity,
       tag: "Online",
       title: "Consultoria Online Básico",
-      desc: "Programa completo para acompanhamento remoto, onde você estiver.",
+      desc: "Acompanhamento remoto com flexibilidade de horários.",
       benefits: [
-        "Avaliação inicial (online)"
+        "Avaliação inicial (online)",
         "Troca de treino mensal",
         "Uso de aplicativo com vídeo dos exercícios",
         "Ajustes periódicos",
@@ -399,15 +399,15 @@ function Services() {
         "Pode tirar dúvidas através do whatsapp.",
       ],
       message:
-        "Olá! Gostaria de saber mais sobre a Consultoria Básica.Tenho interesse em conhecer como funciona a consultoria online básica, quais são os benefícios e como posso começar. Podemos marcar uma conversa?",
+        "Olá! Gostaria de saber mais sobre a Consultoria Básica. Como funciona e como posso começar?",
     },
     {
       icon: Activity,
       tag: "Online",
       title: "Consultoria Online Avançado",
-      desc: "Programa completo para acompanhamento remoto, onde você estiver.",
+      desc: "Acompanhamento completo com aula presencial inclusa.",
       benefits: [
-        "Avaliação inicial (Online)"
+        "Avaliação inicial (Online)",
         "Troca de treino mensal",
         "Uso de aplicativo com vídeo dos exercícios",
         "Pode tirar dúvidas através do whatsapp",
@@ -415,7 +415,7 @@ function Services() {
         "Sob consulta de horário",
       ],
       message:
-        "Olá! Tenho interesse na Consultoria Avançada. Gostaria de entender melhor como funciona a consultoria avançada, o planejamento detalhado e os resultados que posso esperar. Quando podemos conversar sobre isso?",
+        "Olá! Tenho interesse na Consultoria Avançada. Qual é a melhor forma de começar?",
     },
   ];
   return (
@@ -508,10 +508,16 @@ function Results() {
       initials: "LGB",
     },
     {
-      name: "Carlos Mendes",
-      problem: "Dor crônica no quadril",
-      result: "Recuperei minha mobilidade e voltei a correr.",
-      initials: "CM",
+      name: "Gilberto Soares",
+      problem: "Síndrome do Impacto Femoroacetabular",
+      result: "Me chamo Gilberto Soares, e contratei o Personal Trainee Odair devido a uma artrose do lado esquerdo do quadril, impacto fêmoro acetábulo (IFA) o que provoca dores intensas. Após os treinos e acompanhamento do Odair, obtive melhoras significativas, mais mobilidade e redução das dores.",
+      initials: "GS",
+    },
+    {
+      name: "Ricardo Souza",
+      problem: "Hérnia de disco L4-L5",
+      result: "No começo era uma fuga do sedentarismo e do sobrepeso. Depois, com o avanço da idade e a descoberta de uma hérnia de disco,surgiu também a necessidade de fortalecer o corpo para diminuir os incômodos. Hoje, o resultado é uma qualidade de vida adequada para minha idade e um alívio nas limitações que fazem parte do meu cotidiano. Sem a parceria e o acompanhamento do Odair, seria muito mais difícil lidar com as dores crônicas no dia a dia. Sinto uma evolução constante e eficaz no meu treino e tratamento.",
+      initials: "RS",
     },
   ];
   return (
@@ -559,38 +565,41 @@ function Results() {
 function Plans() {
   const plans = [
     {
-      name: "Básico",
+      name: "Plano Básico",
       tag: "Comece agora",
-      price: "R$ 197",
-      period: "/mês",
-      features: ["Avaliação inicial", "Treino personalizado", "Suporte mensal"],
+      originalPrice: 360, // Preço original por mês
+      price: 299.00, // Preço com desconto por 3 meses
+      period: "por 3 meses", // ✅ Deixa claro o período
+      monthlyPrice: (299 / 3).toFixed(2), // R$ 99.67/mês (automático)
+      savings: (360 - 299).toFixed(2), // Economia total
+      features: [
+        "Avaliação inicial",
+        "Treino personalizado",
+        "Suporte mensal"
+      ],
       cta: "Contratar",
       highlight: false,
-      message:
-        "Olá! Gostaria de começar minha transformação com o Plano Básico. Quero uma avaliação inicial e treino personalizado para dar meus primeiros passos!",
+      message: "Olá! Gostaria de começar minha transformação com o Plano Básico por R$ 299,00 em 3 meses!",
     },
     {
-      name: "Premium",
+      name: "Plano Avançado",
       tag: "Mais Popular",
-      price: "R$ 397",
-      period: "/mês",
-      features: ["Tudo do Básico", "Revisões frequentes", "Suporte prioritário", "Acompanhamento completo"],
+      originalPrice: 600, // Preço original por mês
+      price: 510.00, // Preço com desconto por 3 meses
+      period: "por 3 meses",
+      monthlyPrice: (510 / 3).toFixed(2), // R$ 170/mês (automático)
+      savings: (600 - 510).toFixed(2), // Economia total
+      features: [
+        "Tudo do Básico",
+        "Revisões frequentes",
+        "Suporte prioritário",
+        "Acompanhamento completo",
+        "1 aula presencial"
+      ],
       cta: "Contratar Agora",
       highlight: true,
-      message:
-        "Olá! Quero contratar o Plano Premium! Estou comprometido com resultados reais: acompanhamento profissional completo com revisões frequentes e suporte prioritário. Quando podemos começar?",
-    },
-    {
-      name: "VIP",
-      tag: "Exclusivo",
-      price: "Sob consulta",
-      period: "",
-      features: ["Tudo do Premium", "Atendimento exclusivo", "Planejamento avançado", "Consultoria estratégica"],
-      cta: "Solicitar Contato",
-      highlight: false,
-      message:
-        "Olá! Estou interessado no Plano VIP. Quero uma solução exclusiva com consultoria estratégica, planejamento avançado e atendimento VIP. Vamos conversar sobre como potencializar meus resultados?",
-    },
+      message: "Olá! Quero contratar o Plano Avançado por R$ 510,00 em 3 meses!",
+    }
   ];
 
   return (
@@ -605,7 +614,6 @@ function Plans() {
           }
           description="Acompanhamento profissional em diferentes níveis de proximidade."
         />
-
         <div className="reveal mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
           {plans.map((p) => (
             <div
@@ -628,10 +636,23 @@ function Plans() {
                   <span className="text-muted-foreground text-[10px] font-bold uppercase tracking-widest">{p.tag}</span>
                 )}
               </div>
-              <div className="mt-5 flex items-end gap-1">
-                <span className="font-display text-4xl font-extrabold md:text-5xl">{p.price}</span>
-                <span className="text-muted-foreground mb-1.5 text-sm">{p.period}</span>
+
+              {/* ✅ PREÇO REFATORADO */}
+              <div className="mt-5 flex flex-col gap-2">
+                <div className="flex items-end gap-2">
+                  <span className="font-display text-4xl font-extrabold md:text-5xl">
+                    R$ {p.price.toFixed(2).replace(".", ",")}
+                  </span>
+                  <span className="text-muted-foreground text-sm">{p.period}</span>
+                </div>
+                
+                {/* Exibe o preço mensal e economia */}
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <p>~R$ {p.monthlyPrice.replace(".", ",")} por mês</p>
+                  <p className="text-green-600 font-semibold">Economize R$ {p.savings.replace(".", ",")}</p>
+                </div>
               </div>
+
               <ul className="mt-6 grid flex-1 gap-3">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm">
@@ -642,6 +663,7 @@ function Plans() {
                   </li>
                 ))}
               </ul>
+
               <Button
                 asChild
                 className={cn(
@@ -651,7 +673,7 @@ function Plans() {
                     : "bg-surface-elevated text-foreground hover:bg-accent border border-border/70",
                 )}
               >
-                <a
+                
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(p.message)}`}
                   target="_blank"
                   rel="noopener noreferrer"
