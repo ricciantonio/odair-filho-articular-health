@@ -224,7 +224,7 @@ function Hero() {
         alt="Logo Odair Filho Personal Trainer"
         width={3368}
         height={2382}
-        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-20 dark:opacity-30"
+        className="absolute inset-0 -z-20 h-full w-full object-contain object-center opacity-20 dark:opacity-90"
         fetchPriority="high"
       />
 
