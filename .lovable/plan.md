@@ -1,8 +1,13 @@
-Na seção Hero, o nome "Odair Filho" e o "CREF 021795" estão com cor branca fixa, ficando invisíveis no tema claro.
+## Problema
 
-## Alteração
-- Em `src/routes/index.tsx`, no bloco Hero, ajustar as classes do nome e do CREF para usar cor adaptativa:
-  - Nome: `text-white` → `text-foreground` (ou `text-slate-900 dark:text-white`)
-  - CREF: trocar o branco/opaco por um tom de destaque que funcione nos dois temas — vermelho da marca (`text-primary`) para reforçar identidade, com peso semibold.
+Na overlay sobre a foto (seção Sobre, linhas 335–339 de `src/routes/index.tsx`), os textos usam `text-white` / `text-white/70` / `text-white/90`. O gradiente atrás deles é `from-background/90`, que no light theme vira branco — texto branco sobre fundo branco fica invisível.
 
-Nenhuma outra seção é alterada.
+## Mudança
+
+Em `src/routes/index.tsx` (linhas 336–338), trocar as cores fixas por tokens semânticos que se adaptam ao tema:
+
+- "Personal Trainer" (eyebrow): `text-white/70` → `text-foreground/70`
+- "Odair Filho" (nome): `text-white` → `text-foreground`
+- "Cref 021795": `text-white/90` → `text-primary` (vermelho da marca, para destaque)
+
+Resultado: no dark, fica claro sobre o gradiente escuro; no light, fica escuro/vermelho sobre o gradiente branco. Sem mudanças em nenhuma outra seção.
