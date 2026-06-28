@@ -333,9 +333,9 @@ function About() {
               className="aspect-[4/5] h-full w-full object-cover"
             />
             <div className="from-background/90 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-6">
-              <div className="text-xs uppercase tracking-[0.2em] text-white/70">Personal Trainer</div>
-              <div className="font-display mt-1 text-2xl font-bold text-white">Odair Filho</div>
-              <div className="font-display text-lg font-bold text-white/90">Cref 021795</div>
+              <div className="text-foreground/70 text-xs uppercase tracking-[0.2em]">Personal Trainer</div>
+              <div className="font-display text-foreground mt-1 text-2xl font-bold">Odair Filho</div>
+              <div className="font-display text-primary text-lg font-bold">Cref 021795</div>
             </div>
           </div>
         </div>
