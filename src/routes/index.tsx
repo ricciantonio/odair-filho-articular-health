@@ -781,12 +781,14 @@ function FAQSection() {
           }
           description="As respostas para as perguntas que mais recebo."
         />
-        <Accordion type="single" collapsible className="reveal mt-12 w-full space-y-3">
+        <Accordion type="single" collapsible className="mt-12 w-full space-y-3">
           {items.map((it, i) => (
             <AccordionItem
               key={i}
               value={`i-${i}`}
-              className="border-border/60 bg-surface/50 overflow-hidden rounded-xl border px-5"
+              data-animate
+              style={{ ["--scroll-delay" as never]: `${i * 60}ms` }}
+              className="scroll-animate border-border/60 bg-surface/50 overflow-hidden rounded-xl border px-5"
             >
               <AccordionTrigger className="text-left text-base font-semibold hover:no-underline md:text-lg">
                 {it.q}
