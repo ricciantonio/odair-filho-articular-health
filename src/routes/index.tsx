@@ -714,7 +714,7 @@ function Plans() {
         </div>
 
         {/* ✅ DIREITO DE ARREPENDIMENTO - Recomendação Final */}
-        <div className="reveal mt-12 flex justify-center">
+        <div data-animate className="scroll-animate mt-12 flex justify-center" style={{ ["--scroll-delay" as never]: "300ms" }}>
           <div className="max-w-2xl w-full rounded-xl border border-green-500/30 bg-gradient-to-r from-green-500/5 to-emerald-500/5 p-6 md:p-8 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
               <ShieldCheck className="h-5 w-5 text-green-600" />
