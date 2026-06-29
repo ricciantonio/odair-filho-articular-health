@@ -817,22 +817,28 @@ function Contact() {
           description="Responda em poucos minutos para agendar sua avaliação."
         />
 
-        <div className="reveal mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <ContactForm />
-          <ContactCard
-            icon={MessageCircle}
-            title="WhatsApp"
-            text="Fale diretamente comigo"
-            cta="Abrir WhatsApp"
-            href={waLink}
-          />
-          <ContactCard
-            icon={Instagram}
-            title="Instagram"
-            text={INSTAGRAM_HANDLE}
-            cta="Seguir perfil"
-            href={INSTAGRAM_URL}
-          />
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div data-animate className="scroll-animate-left lg:col-span-1">
+            <ContactForm />
+          </div>
+          <div data-animate className="scroll-animate" style={{ ["--scroll-delay" as never]: "120ms" }}>
+            <ContactCard
+              icon={MessageCircle}
+              title="WhatsApp"
+              text="Fale diretamente comigo"
+              cta="Abrir WhatsApp"
+              href={waLink}
+            />
+          </div>
+          <div data-animate className="scroll-animate" style={{ ["--scroll-delay" as never]: "240ms" }}>
+            <ContactCard
+              icon={Instagram}
+              title="Instagram"
+              text={INSTAGRAM_HANDLE}
+              cta="Seguir perfil"
+              href={INSTAGRAM_URL}
+            />
+          </div>
         </div>
       </div>
     </section>
