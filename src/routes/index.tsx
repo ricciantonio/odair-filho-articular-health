@@ -321,7 +321,7 @@ function About() {
   return (
     <section id="sobre" className="relative py-24 md:py-32">
       <div className="container-wide grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="reveal relative">
+        <div data-animate className="scroll-animate-left relative">
           <div className="bg-gradient-brand absolute -inset-4 -z-10 rounded-3xl opacity-20 blur-2xl" />
           <div className="border-border/60 relative overflow-hidden rounded-3xl border shadow-elevated">
             <img
@@ -340,7 +340,7 @@ function About() {
           </div>
         </div>
 
-        <div className="reveal space-y-6">
+        <div data-animate className="scroll-animate-right space-y-6" style={{ ["--scroll-delay" as never]: "150ms" }}>
           <span className="text-brand text-xs font-bold uppercase tracking-[0.25em]">Sobre</span>
           <h2 className="font-display text-3xl font-extrabold leading-tight md:text-5xl">
             Mais de 14 anos transformando <span className="text-gradient-brand">vidas sem dor</span>
@@ -430,11 +430,13 @@ function Services() {
           description="Atendimento humano e técnico, com plano de treino construído a partir da sua condição atual."
         />
 
-        <div className="reveal mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          {items.map((s) => (
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+          {items.map((s, idx) => (
             <article
               key={s.title}
-              className="group border-border/60 bg-background relative overflow-hidden rounded-2xl border p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--brand)]/60 md:p-9"
+              data-animate
+              style={{ ["--scroll-delay" as never]: `${idx * 120}ms` }}
+              className="scroll-animate group border-border/60 bg-background relative overflow-hidden rounded-2xl border p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--brand)]/60 md:p-9"
             >
               <div
                 aria-hidden
@@ -533,11 +535,13 @@ function Results() {
           }
           description="Histórias de quem deixou a dor para trás e recuperou a vida ativa."
         />
-        <div className="reveal mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {data.map((d) => (
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {data.map((d, idx) => (
             <figure
               key={d.name}
-              className="border-border/60 bg-surface/50 flex h-full flex-col rounded-2xl border p-6 transition hover:-translate-y-1 hover:border-[color:var(--brand)]/60"
+              data-animate
+              style={{ ["--scroll-delay" as never]: `${(idx % 4) * 90}ms` }}
+              className="scroll-animate border-border/60 bg-surface/50 flex h-full flex-col rounded-2xl border p-6 transition hover:-translate-y-1 hover:border-[color:var(--brand)]/60"
             >
               <div className="flex items-center gap-3">
                 <span className="bg-gradient-brand font-display grid h-11 w-11 place-items-center rounded-full text-sm font-bold text-white">
@@ -630,13 +634,15 @@ function Plans() {
         />
 
         {/* ✅ Grid centralizado com 2 colunas */}
-        <div className="reveal mt-14 flex justify-center">
+        <div className="mt-14 flex justify-center">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-4xl">
-            {plans.map((p) => (
+            {plans.map((p, idx) => (
               <div
                 key={p.name}
+                data-animate
+                style={{ ["--scroll-delay" as never]: `${idx * 150}ms` }}
                 className={cn(
-                  "relative flex flex-col rounded-2xl border p-7 transition md:p-8 text-center",
+                  "scroll-animate-zoom relative flex flex-col rounded-2xl border p-7 transition md:p-8 text-center",
                   p.highlight
                     ? "border-[color:var(--brand)] bg-background shadow-brand-glow md:scale-[1.02]"
                     : "border-border/60 bg-background hover:-translate-y-1",
@@ -708,7 +714,7 @@ function Plans() {
         </div>
 
         {/* ✅ DIREITO DE ARREPENDIMENTO - Recomendação Final */}
-        <div className="reveal mt-12 flex justify-center">
+        <div data-animate className="scroll-animate mt-12 flex justify-center" style={{ ["--scroll-delay" as never]: "300ms" }}>
           <div className="max-w-2xl w-full rounded-xl border border-green-500/30 bg-gradient-to-r from-green-500/5 to-emerald-500/5 p-6 md:p-8 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
               <ShieldCheck className="h-5 w-5 text-green-600" />
@@ -775,12 +781,14 @@ function FAQSection() {
           }
           description="As respostas para as perguntas que mais recebo."
         />
-        <Accordion type="single" collapsible className="reveal mt-12 w-full space-y-3">
+        <Accordion type="single" collapsible className="mt-12 w-full space-y-3">
           {items.map((it, i) => (
             <AccordionItem
               key={i}
               value={`i-${i}`}
-              className="border-border/60 bg-surface/50 overflow-hidden rounded-xl border px-5"
+              data-animate
+              style={{ ["--scroll-delay" as never]: `${i * 60}ms` }}
+              className="scroll-animate border-border/60 bg-surface/50 overflow-hidden rounded-xl border px-5"
             >
               <AccordionTrigger className="text-left text-base font-semibold hover:no-underline md:text-lg">
                 {it.q}
@@ -809,22 +817,28 @@ function Contact() {
           description="Responda em poucos minutos para agendar sua avaliação."
         />
 
-        <div className="reveal mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <ContactForm />
-          <ContactCard
-            icon={MessageCircle}
-            title="WhatsApp"
-            text="Fale diretamente comigo"
-            cta="Abrir WhatsApp"
-            href={waLink}
-          />
-          <ContactCard
-            icon={Instagram}
-            title="Instagram"
-            text={INSTAGRAM_HANDLE}
-            cta="Seguir perfil"
-            href={INSTAGRAM_URL}
-          />
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div data-animate className="scroll-animate-left lg:col-span-1">
+            <ContactForm />
+          </div>
+          <div data-animate className="scroll-animate" style={{ ["--scroll-delay" as never]: "120ms" }}>
+            <ContactCard
+              icon={MessageCircle}
+              title="WhatsApp"
+              text="Fale diretamente comigo"
+              cta="Abrir WhatsApp"
+              href={waLink}
+            />
+          </div>
+          <div data-animate className="scroll-animate" style={{ ["--scroll-delay" as never]: "240ms" }}>
+            <ContactCard
+              icon={Instagram}
+              title="Instagram"
+              text={INSTAGRAM_HANDLE}
+              cta="Seguir perfil"
+              href={INSTAGRAM_URL}
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -1071,7 +1085,7 @@ function SectionHead({
 // =================== HOOKS ===================
 function useScrollReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const els = document.querySelectorAll<HTMLElement>(".reveal, [data-animate]");
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
