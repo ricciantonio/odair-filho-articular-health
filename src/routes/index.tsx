@@ -321,7 +321,7 @@ function About() {
   return (
     <section id="sobre" className="relative py-24 md:py-32">
       <div className="container-wide grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="reveal relative">
+        <div data-animate className="scroll-animate-left relative">
           <div className="bg-gradient-brand absolute -inset-4 -z-10 rounded-3xl opacity-20 blur-2xl" />
           <div className="border-border/60 relative overflow-hidden rounded-3xl border shadow-elevated">
             <img
