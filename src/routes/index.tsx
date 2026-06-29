@@ -634,13 +634,15 @@ function Plans() {
         />
 
         {/* ✅ Grid centralizado com 2 colunas */}
-        <div className="reveal mt-14 flex justify-center">
+        <div className="mt-14 flex justify-center">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-4xl">
-            {plans.map((p) => (
+            {plans.map((p, idx) => (
               <div
                 key={p.name}
+                data-animate
+                style={{ ["--scroll-delay" as never]: `${idx * 150}ms` }}
                 className={cn(
-                  "relative flex flex-col rounded-2xl border p-7 transition md:p-8 text-center",
+                  "scroll-animate-zoom relative flex flex-col rounded-2xl border p-7 transition md:p-8 text-center",
                   p.highlight
                     ? "border-[color:var(--brand)] bg-background shadow-brand-glow md:scale-[1.02]"
                     : "border-border/60 bg-background hover:-translate-y-1",
