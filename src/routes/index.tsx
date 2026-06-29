@@ -535,11 +535,13 @@ function Results() {
           }
           description="Histórias de quem deixou a dor para trás e recuperou a vida ativa."
         />
-        <div className="reveal mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {data.map((d) => (
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {data.map((d, idx) => (
             <figure
               key={d.name}
-              className="border-border/60 bg-surface/50 flex h-full flex-col rounded-2xl border p-6 transition hover:-translate-y-1 hover:border-[color:var(--brand)]/60"
+              data-animate
+              style={{ ["--scroll-delay" as never]: `${(idx % 4) * 90}ms` }}
+              className="scroll-animate border-border/60 bg-surface/50 flex h-full flex-col rounded-2xl border p-6 transition hover:-translate-y-1 hover:border-[color:var(--brand)]/60"
             >
               <div className="flex items-center gap-3">
                 <span className="bg-gradient-brand font-display grid h-11 w-11 place-items-center rounded-full text-sm font-bold text-white">
