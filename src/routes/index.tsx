@@ -430,11 +430,13 @@ function Services() {
           description="Atendimento humano e técnico, com plano de treino construído a partir da sua condição atual."
         />
 
-        <div className="reveal mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
-          {items.map((s) => (
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+          {items.map((s, idx) => (
             <article
               key={s.title}
-              className="group border-border/60 bg-background relative overflow-hidden rounded-2xl border p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--brand)]/60 md:p-9"
+              data-animate
+              style={{ ["--scroll-delay" as never]: `${idx * 120}ms` }}
+              className="scroll-animate group border-border/60 bg-background relative overflow-hidden rounded-2xl border p-7 transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--brand)]/60 md:p-9"
             >
               <div
                 aria-hidden
