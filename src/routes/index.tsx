@@ -1071,7 +1071,7 @@ function SectionHead({
 // =================== HOOKS ===================
 function useScrollReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const els = document.querySelectorAll<HTMLElement>(".reveal, [data-animate]");
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
