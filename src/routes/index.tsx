@@ -340,7 +340,7 @@ function About() {
           </div>
         </div>
 
-        <div className="reveal space-y-6">
+        <div data-animate className="scroll-animate-right space-y-6" style={{ ["--scroll-delay" as never]: "150ms" }}>
           <span className="text-brand text-xs font-bold uppercase tracking-[0.25em]">Sobre</span>
           <h2 className="font-display text-3xl font-extrabold leading-tight md:text-5xl">
             Mais de 14 anos transformando <span className="text-gradient-brand">vidas sem dor</span>
