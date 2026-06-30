@@ -516,6 +516,13 @@ function Results() {
       initials: "GS",
     },
     {
+      name: "Danilo Nascimento",
+      problem: "Auxiliar no fortalecimento do joelho e aumentar a massa muscular",
+      result:
+        "Comecei a consultoria com o Odair por dois motivos: auxiliar no fortalecimento do joelho e aumentar a massa muscular. Os resultados tem sido ótimos, as queixas de dores diminuíram visivelmente e o corpo tem demonstrado claros resultados, esses que com certeza vêm da qualidade da elaboração do treino, já que fazem sentido com a minha motivação. Juntando ambos os objetivos e suas contínuas realizações, posso afirmar que minha qualidade de vida aumentou muito.",
+      initials: "DN",
+    },
+    {
       name: "Ricardo Souza",
       problem: "Hérnia de disco L4-L5",
       result:
@@ -714,7 +721,11 @@ function Plans() {
         </div>
 
         {/* ✅ DIREITO DE ARREPENDIMENTO - Recomendação Final */}
-        <div data-animate className="scroll-animate mt-12 flex justify-center" style={{ ["--scroll-delay" as never]: "300ms" }}>
+        <div
+          data-animate
+          className="scroll-animate mt-12 flex justify-center"
+          style={{ ["--scroll-delay" as never]: "300ms" }}
+        >
           <div className="max-w-2xl w-full rounded-xl border border-green-500/30 bg-gradient-to-r from-green-500/5 to-emerald-500/5 p-6 md:p-8 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
               <ShieldCheck className="h-5 w-5 text-green-600" />
