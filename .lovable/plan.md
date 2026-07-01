@@ -1,84 +1,40 @@
-# Animate on Scroll — Plano
 
-Recomendação: **Tailwind v4 + CSS puro + um pequeno hook JS** com `IntersectionObserver`. Não precisa de biblioteca externa (AOS, Framer Motion). O projeto já tem a base pronta em `src/styles.css` (classe `.reveal` + `.reveal.in-view`), só falta o "gatilho" JS e variantes utilitárias.
+# Nova seção: "Como o acompanhamento profissional transforma seu treino"
 
-## Por quê assim
-- **Só CSS** não detecta entrada no viewport de forma confiável cross-browser (o `animation-timeline: view()` ainda não tem suporte universal em 2026 — Safari/Firefox parciais).
-- **Tailwind v4** é CSS-first: definimos `@utility` no `styles.css` e usamos via `className`.
-- **JS mínimo** (hook reutilizável de ~20 linhas) liga/desliga a classe `.in-view` quando o elemento entra na tela.
+## O que será feito
 
-## O que será criado/alterado
+### 1. Upload das 3 imagens via Lovable Assets
+Subir as 3 imagens anexadas para o CDN (não ficam no repo):
+- `src/assets/beneficio-personal.jpg.asset.json` (Imagem 1 — checklist)
+- `src/assets/objetivo-claro.jpg.asset.json` (Imagem 2 — objetivo)
+- `src/assets/acompanhamento-treino.jpg.asset.json` (Imagem 3 — potencializa)
 
-### 1. `src/styles.css` — adicionar utilitários `@utility`
-Expandir o `.reveal` atual para variantes (fade-up, fade-in, fade-left, fade-right, zoom-in) e suporte a `delay` via CSS custom property:
+### 2. Nova seção em `src/routes/index.tsx`
+Inserida **após Depoimentos** e **antes de FAQ**, com id `beneficios`.
 
-```css
-@utility scroll-animate {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: var(--scroll-delay, 0ms);
-}
-@utility scroll-animate-left  { /* translateX(-24px) */ }
-@utility scroll-animate-right { /* translateX(24px) */ }
-@utility scroll-animate-zoom  { /* scale(0.92) */ }
+**Estrutura:**
+- Header da seção: eyebrow "Diferenciais" + título "Como o acompanhamento profissional transforma seu treino"
+- 3 blocos verticais empilhados (`space-y-20 md:space-y-28`) usando grid 2 colunas no desktop (`md:grid-cols-2`), empilhado no mobile
+- Alternância via `md:[&>*:nth-child(2)]:order-first` OU renderizando cada bloco com prop `reverse`:
+  - Bloco 1: imagem esquerda, texto direita
+  - Bloco 2: texto esquerda, imagem direita (reverse)
+  - Bloco 3: imagem esquerda, texto direita
+- Imagens com `rounded-2xl`, `shadow-elevated`, `aspect-[4/5]`, `object-cover`
+- Textos usando tokens semânticos: título `text-foreground` (font-display, bold), corpo `text-muted-foreground`, detalhe vermelho `text-primary` (barra lateral 4px na imagem do próprio arquivo já embutida)
+- Animações scroll: imagem `scroll-animate-left` (ou right no reverse), texto `scroll-animate-right` (ou left), com `--scroll-delay` de 100ms no texto
 
-/* estado ativado */
-.in-view.scroll-animate,
-.in-view.scroll-animate-left,
-.in-view.scroll-animate-right,
-.in-view.scroll-animate-zoom {
-  opacity: 1;
-  transform: none;
-}
+**Sem links clicáveis nos blocos** — apenas conteúdo estático.
 
-@media (prefers-reduced-motion: reduce) {
-  [class*="scroll-animate"] { opacity: 1 !important; transform: none !important; }
-}
-```
-
-### 2. `src/hooks/use-scroll-animate.ts` — novo hook
-```ts
-import { useEffect } from "react";
-
-export function useScrollAnimate(selector = "[data-animate]") {
-  useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>(selector);
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("in-view");
-            io.unobserve(e.target); // dispara só uma vez
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [selector]);
-}
-```
-
-### 3. Uso em qualquer rota/componente
-```tsx
-useScrollAnimate();
-
-<h2 data-animate className="scroll-animate">Título</h2>
-<p   data-animate className="scroll-animate" style={{ ['--scroll-delay' as any]: '150ms' }}>
-  Sub
-</p>
-<img data-animate className="scroll-animate-left" />
-```
+### 3. Conteúdo dos 3 blocos
+Textos exatamente como fornecidos pelo usuário, com alt-text conforme instruído (SEO local para "Personal trainer em Londrina").
 
 ## Detalhes técnicos
-- `IntersectionObserver` é nativo, zero dependência, ótima performance.
-- `unobserve` após disparar evita re-trigger ao rolar de volta (mude para `remove("in-view")` no `else` se quiser repetir).
-- `prefers-reduced-motion` respeitado por acessibilidade.
-- Compatível com SSR do TanStack Start: hook roda em `useEffect` (client-only).
-- O `.reveal` atual no `styles.css` continua funcionando — os novos `@utility` ficam em paralelo; depois podemos migrar.
+- Tokens de tema: `bg-background`, `text-foreground`, `text-muted-foreground`, `text-primary`, `border-border` — funciona em light e dark
+- Espaçamento generoso: seção com `py-24 md:py-32`, gap interno entre blocos `gap-20 md:gap-28`
+- Responsivo: `grid md:grid-cols-2 gap-8 md:gap-16 items-center`
+- Reutiliza o hook `useScrollAnimate` já ativo na página
 
 ## Fora de escopo
-- Não vou aplicar nos componentes existentes do site agora — só criar a infra. Quando aprovar, posso aplicar nas seções (Hero, Sobre, Serviços, Planos) num passo seguinte.
+- Não alterar outras seções
+- Não adicionar CTAs/links nos blocos
+- Não mexer no favicon, header ou meta tags
