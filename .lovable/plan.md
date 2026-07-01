@@ -1,26 +1,26 @@
-## Plano para corrigir o publish
+## Diagnóstico
 
-1. **Confirmar o estado atual**
-   - O projeto já está publicado e público.
-   - URLs atuais:
-     - `https://odairfilhopersonal.lovable.app`
-     - `https://www.odairfilhopersonal.com.br`
-   - Não há findings críticos de segurança bloqueando no status atual.
+O projeto está configurado para **Cloudflare Workers (SSR via TanStack Start + Nitro)**, não para Vercel. O `vite.config.ts` usa `@lovable.dev/vite-tanstack-config` que gera build para Workers por padrão. Por isso o deploy na Vercel não reflete as alterações — provavelmente está servindo um build antigo/estático ou falhando silenciosamente na detecção do framework.
 
-2. **Investigar o motivo real do botão não publicar**
-   - Verificar erros recentes do servidor/dev preview.
-   - Verificar erros TypeScript/build relacionados às últimas alterações.
-   - Corrigir o warning React atual: `fetchpriority` deve ser `fetchPriority`.
-   - Conferir se a seção nova e o botão de tema mobile não deixaram JSX/imports quebrados.
+Além disso, o site oficial já está publicado e funcionando em:
+- `https://odairfilhopersonal.lovable.app`
+- `https://www.odairfilhopersonal.com.br`
 
-3. **Corrigir os problemas encontrados no código**
-   - Ajustar apenas os erros que podem impedir build/deploy.
-   - Manter as alterações recentes do site: menu mobile, seção Benefícios, tema light/dark e SEO.
+Todas as últimas alterações (seção Benefícios, menu mobile, tema, etc.) estão no ar nessas URLs via Lovable.
 
-4. **Validar antes de publicar**
-   - Rodar verificação seletiva para garantir que não há erro de TypeScript/lint/build.
-   - Conferir preview carregando sem overlay de erro.
+## Plano
 
-5. **Publicar novamente**
-   - Após validação, disparar o publish/update para o site publicado.
-   - Informar que a atualização leva cerca de 1 minuto, e pode levar alguns minutos a mais no domínio próprio.
+1. **Confirmar qual deploy o usuário quer usar** (Lovable ou Vercel). Recomendação: usar apenas Lovable, já que o domínio próprio `odairfilhopersonal.com.br` está conectado e o SSR do TanStack Start funciona nativamente.
+
+2. **Se mantiver Vercel**, opções:
+   - **Opção A (recomendada)**: Abandonar Vercel e usar só Lovable (1 clique em "Update" no botão Publish reflete tudo).
+   - **Opção B**: Adaptar o projeto para Vercel — trocar o target Nitro para `vercel` no `vite.config.ts`, adicionar `vercel.json`, garantir que o repositório GitHub esteja recebendo os commits mais recentes das alterações (a causa mais comum do "Vercel não atualiza" é o push não ter chegado no repositório conectado).
+
+3. **Verificar sincronização Git → Vercel**: se o usuário fez alterações direto no Lovable, precisa garantir que o GitHub está sincronizado (Lovable ↔ GitHub bidirecional) e que a Vercel está apontando para o branch correto (`main`).
+
+4. **Republicar via Lovable** para garantir que a versão mais recente esteja no domínio próprio.
+
+## Perguntas antes de executar
+
+- Você quer **manter o Vercel** ou pode ficar **só com o Lovable** (já que o `www.odairfilhopersonal.com.br` já funciona por lá)?
+- Se quiser manter Vercel: o repositório GitHub conectado está recebendo os commits das últimas alterações? (Verifique em github.com se o commit mais recente contém a seção "Benefícios".)
