@@ -748,6 +748,90 @@ function Plans() {
   );
 }
 
+// =================== BENEFÍCIOS ===================
+function Beneficios() {
+  const blocos = [
+    {
+      title: "Com um Personal Trainer, você tem",
+      text: "Treino personalizado para a sua realidade, alguém que entende suas dores e limitações, identifica o que sabota seus resultados, mostra exatamente onde você precisa melhorar e te dá a orientação necessária para alcançar suas metas com segurança.",
+      image: beneficioPersonalAsset.url,
+      alt: "Personal trainer em Londrina explicando os benefícios do acompanhamento personalizado",
+    },
+    {
+      title: "Você tem um objetivo claro?",
+      text: "Antes de qualquer treino, é preciso saber exatamente onde você quer chegar. Reduzir uma dor, ganhar mobilidade, ou simplesmente voltar a se mover sem medo — definir esse objetivo é o primeiro passo para um plano de treino que realmente funciona para o seu corpo.",
+      image: objetivoClaroAsset.url,
+      alt: "Personal trainer em Londrina questionando sobre definição de objetivos de treino",
+    },
+    {
+      title: "Por que o acompanhamento potencializa seus treinos",
+      text: "Treinar sozinho tem limites. Com acompanhamento profissional, cada exercício é ajustado à sua evolução, corrigido no momento certo e direcionado para o resultado que você busca — com mais segurança e menos chance de estagnar.",
+      image: acompanhamentoTreinoAsset.url,
+      alt: "Personal trainer em Londrina mostrando os benefícios do acompanhamento profissional nos treinos",
+    },
+  ];
+  return (
+    <section id="beneficios" className="py-24 md:py-32">
+      <div className="container-wide">
+        <SectionHead
+          eyebrow="Diferenciais"
+          title={
+            <>
+              Como o acompanhamento profissional <span className="text-gradient-brand">transforma</span> seu treino
+            </>
+          }
+          description="Três razões pelas quais treinar com orientação especializada muda o resultado — e o processo."
+        />
+        <div className="mt-16 flex flex-col gap-20 md:gap-28">
+          {blocos.map((b, idx) => {
+            const reverse = idx % 2 === 1;
+            return (
+              <article
+                key={b.title}
+                className={cn(
+                  "grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-14",
+                )}
+              >
+                <div
+                  data-animate
+                  className={cn(
+                    reverse ? "scroll-animate-right md:order-2" : "scroll-animate-left",
+                  )}
+                >
+                  <div className="border-border/60 shadow-elevated relative overflow-hidden rounded-2xl border">
+                    <img
+                      src={b.image}
+                      alt={b.alt}
+                      loading="lazy"
+                      className="aspect-[4/5] w-full object-cover"
+                    />
+                  </div>
+                </div>
+                <div
+                  data-animate
+                  style={{ ["--scroll-delay" as never]: "120ms" }}
+                  className={cn(
+                    reverse ? "scroll-animate-left md:order-1" : "scroll-animate-right",
+                  )}
+                >
+                  <div className="border-primary border-l-4 pl-5 md:pl-6">
+                    <h3 className="font-display text-foreground text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+                      {b.title}
+                    </h3>
+                    <p className="text-muted-foreground mt-5 text-base leading-relaxed sm:text-lg">
+                      {b.text}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // =================== FAQ ===================
 function FAQSection() {
   const items = [
