@@ -25,6 +25,9 @@ import {
 import odairImg from "@/assets/odair.jpg";
 import logoImg from "@/assets/logo.png";
 import heroLogoAsset from "@/assets/logo-hero.png.asset.json";
+import beneficioPersonalAsset from "@/assets/beneficio-personal.jpg.asset.json";
+import objetivoClaroAsset from "@/assets/objetivo-claro.jpg.asset.json";
+import acompanhamentoTreinoAsset from "@/assets/acompanhamento-treino.jpg.asset.json";
 const heroLogoImg = heroLogoAsset.url;
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -102,6 +105,7 @@ function HomePage() {
         <About />
         <Services />
         <Results />
+        <Beneficios />
         <Plans />
         <FAQSection />
         <Contact />
