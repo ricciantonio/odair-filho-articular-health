@@ -1,14 +1,26 @@
-## Ajustes
+## Plano para corrigir o publish
 
-**1. Toggle de tema no mobile**
-No `Header` (src/routes/index.tsx ~L172-178), o botão de alternar tema tem `hidden ... md:grid`, então só aparece em telas ≥ md. Além disso, no menu mobile (drawer, L202-215) o toggle não existe.
+1. **Confirmar o estado atual**
+   - O projeto já está publicado e público.
+   - URLs atuais:
+     - `https://odairfilhopersonal.lovable.app`
+     - `https://www.odairfilhopersonal.com.br`
+   - Não há findings críticos de segurança bloqueando no status atual.
 
-- Remover `hidden ... md:grid` do botão de tema para exibi-lo sempre no header (ao lado do menu hambúrguer).
-- Como alternativa/adicional: incluir também uma linha "Alternar tema (claro/escuro)" dentro do drawer mobile.
+2. **Investigar o motivo real do botão não publicar**
+   - Verificar erros recentes do servidor/dev preview.
+   - Verificar erros TypeScript/build relacionados às últimas alterações.
+   - Corrigir o warning React atual: `fetchpriority` deve ser `fetchPriority`.
+   - Conferir se a seção nova e o botão de tema mobile não deixaram JSX/imports quebrados.
 
-**2. Seção Benefícios ausente no menu**
-O array `NAV` (L73-81) não contém a nova seção `beneficios` (que existe em L774 como `id="beneficios"`).
+3. **Corrigir os problemas encontrados no código**
+   - Ajustar apenas os erros que podem impedir build/deploy.
+   - Manter as alterações recentes do site: menu mobile, seção Benefícios, tema light/dark e SEO.
 
-- Adicionar `{ id: "beneficios", label: "Benefícios" }` no `NAV`, posicionado entre `resultados` e `planos` (mesma ordem visual da página).
+4. **Validar antes de publicar**
+   - Rodar verificação seletiva para garantir que não há erro de TypeScript/lint/build.
+   - Conferir preview carregando sem overlay de erro.
 
-Nenhuma outra área é tocada.
+5. **Publicar novamente**
+   - Após validação, disparar o publish/update para o site publicado.
+   - Informar que a atualização leva cerca de 1 minuto, e pode levar alguns minutos a mais no domínio próprio.
