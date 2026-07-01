@@ -25,16 +25,8 @@ import {
 import odairImg from "@/assets/odair.jpg";
 import logoImg from "@/assets/logo.png";
 import heroLogoAsset from "@/assets/logo-hero.png.asset.json";
-import beneficioPersonalAsset from "@/assets/beneficio-personal.jpg.asset.json";
-import objetivoClaroAsset from "@/assets/objetivo-claro.jpg.asset.json";
-import acompanhamentoTreinoAsset from "@/assets/acompanhamento-treino.jpg.asset.json";
 const heroLogoImg = heroLogoAsset.url;
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -62,7 +54,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://odairfilhopersonal.com.br/" },
-      { rel: "preload", as: "image", href: heroLogoImg, fetchPriority: "high" } as never,
+      { rel: "preload", as: "image", href: heroLogoImg, fetchpriority: "high" } as never,
     ],
   }),
   component: HomePage,
@@ -80,7 +72,6 @@ const NAV = [
   { id: "sobre", label: "Sobre" },
   { id: "servicos", label: "Serviços" },
   { id: "resultados", label: "Resultados" },
-  { id: "beneficios", label: "Benefícios" },
   { id: "planos", label: "Planos" },
   { id: "faq", label: "FAQ" },
   { id: "contato", label: "Contato" },
@@ -111,7 +102,6 @@ function HomePage() {
         <About />
         <Services />
         <Results />
-        <Beneficios />
         <Plans />
         <FAQSection />
         <Contact />
@@ -178,7 +168,7 @@ function Header() {
           <button
             aria-label="Alternar tema"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="hover:bg-accent/60 grid h-10 w-10 place-items-center rounded-lg transition"
+            className="hover:bg-accent/60 hidden h-10 w-10 place-items-center rounded-lg transition md:grid"
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
@@ -215,10 +205,7 @@ function Header() {
               {n.label}
             </button>
           ))}
-          <Button
-            onClick={() => go("contato")}
-            className="bg-gradient-brand mt-2 h-11 w-full rounded-lg font-semibold"
-          >
+          <Button onClick={() => go("contato")} className="bg-gradient-brand mt-2 h-11 w-full rounded-lg font-semibold">
             Agendar Avaliação
           </Button>
         </div>
@@ -230,10 +217,7 @@ function Header() {
 // =================== HERO ===================
 function Hero() {
   return (
-    <section
-      id="inicio"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-24 md:pt-28"
-    >
+    <section id="inicio" className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-24 md:pt-28">
       <div aria-hidden className="absolute inset-0 -z-20 bg-background" />
       <img
         src={heroLogoImg}
@@ -244,11 +228,7 @@ function Hero() {
         fetchPriority="high"
       />
 
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{ background: "var(--gradient-hero)" }}
-      />
+      <div aria-hidden className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div
         aria-hidden
         className="from-background absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t to-transparent"
@@ -264,26 +244,21 @@ function Hero() {
             className="font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl animate-fade-up"
             style={{ animationDelay: "80ms" }}
           >
-            Personal Trainer Especializado em{" "}
-            <span className="text-gradient-brand">Dores Articulares</span>
+            Personal Trainer Especializado em <span className="text-gradient-brand">Dores Articulares</span>
           </h1>
           <p
             className="max-w-2xl text-base text-white/80 sm:text-lg md:text-xl animate-fade-up"
             style={{ animationDelay: "160ms" }}
           >
-            Acabe com suas dores e recupere sua qualidade de vida com acompanhamento profissional e
-            metodologia comprovada.
+            Acabe com suas dores e recupere sua qualidade de vida com acompanhamento profissional e metodologia
+            comprovada.
           </p>
 
           <ul
             className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/90 animate-fade-up"
             style={{ animationDelay: "220ms" }}
           >
-            {[
-              "14 anos de experiência",
-              "Especialista em quadril e joelhos",
-              "Presencial e online",
-            ].map((t) => (
+            {["14 anos de experiência", "Especialista em quadril e joelhos", "Presencial e online"].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <CheckCircle2 className="text-brand h-4 w-4" />
                 {t}
@@ -325,9 +300,7 @@ function Hero() {
             { k: "★★★★★", v: "Resultados comprovados" },
           ].map((s) => (
             <div key={s.v} className="bg-background/40 px-6 py-5">
-              <div className="text-gradient-brand font-display text-2xl font-extrabold md:text-3xl">
-                {s.k}
-              </div>
+              <div className="text-gradient-brand font-display text-2xl font-extrabold md:text-3xl">{s.k}</div>
               <div className="text-muted-foreground mt-0.5 text-sm">{s.v}</div>
             </div>
           ))}
@@ -360,30 +333,21 @@ function About() {
               className="aspect-[4/5] h-full w-full object-cover"
             />
             <div className="from-background/90 absolute inset-x-0 bottom-0 bg-gradient-to-t to-transparent p-6">
-              <div className="text-foreground/70 text-xs uppercase tracking-[0.2em]">
-                Personal Trainer
-              </div>
-              <div className="font-display text-foreground mt-1 text-2xl font-bold">
-                Odair Filho
-              </div>
+              <div className="text-foreground/70 text-xs uppercase tracking-[0.2em]">Personal Trainer</div>
+              <div className="font-display text-foreground mt-1 text-2xl font-bold">Odair Filho</div>
               <div className="font-display text-primary text-lg font-bold">Cref 021795</div>
             </div>
           </div>
         </div>
 
-        <div
-          data-animate
-          className="scroll-animate-right space-y-6"
-          style={{ ["--scroll-delay" as never]: "150ms" }}
-        >
+        <div data-animate className="scroll-animate-right space-y-6" style={{ ["--scroll-delay" as never]: "150ms" }}>
           <span className="text-brand text-xs font-bold uppercase tracking-[0.25em]">Sobre</span>
           <h2 className="font-display text-3xl font-extrabold leading-tight md:text-5xl">
             Mais de 14 anos transformando <span className="text-gradient-brand">vidas sem dor</span>
           </h2>
           <p className="text-muted-foreground text-base leading-relaxed md:text-lg">
-            Há mais de 14 anos ajudando pessoas a superar dores articulares e recuperar qualidade de
-            vida através do treinamento personalizado, com metodologia que une ciência do exercício
-            e reabilitação.
+            Há mais de 14 anos ajudando pessoas a superar dores articulares e recuperar qualidade de vida através do
+            treinamento personalizado, com metodologia que une ciência do exercício e reabilitação.
           </p>
 
           <ul className="grid gap-3 text-sm md:text-base">
@@ -435,8 +399,7 @@ function Services() {
         "Flexibilidade de horários",
         "Pode tirar dúvidas através do whatsapp",
       ],
-      message:
-        "Olá! Gostaria de saber mais sobre a Consultoria Básica. Como funciona e como posso começar?",
+      message: "Olá! Gostaria de saber mais sobre a Consultoria Básica. Como funciona e como posso começar?",
     },
     {
       icon: Activity,
@@ -499,10 +462,7 @@ function Services() {
               </ul>
               <Button
                 onClick={() =>
-                  window.open(
-                    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(s.message)}`,
-                    "_blank",
-                  )
+                  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(s.message)}`, "_blank")
                 }
                 variant="ghost"
                 className="hover:bg-brand/10 hover:text-brand mt-7 h-11 w-full rounded-lg border border-border/70 font-semibold"
@@ -604,9 +564,7 @@ function Results() {
                   <Star key={i} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="mt-3 text-sm leading-relaxed text-foreground/90">
-                "{d.result}"
-              </blockquote>
+              <blockquote className="mt-3 text-sm leading-relaxed text-foreground/90">"{d.result}"</blockquote>
             </figure>
           ))}
         </div>
@@ -632,12 +590,11 @@ function Plans() {
         "Uso de aplicativo com video dos exercícios",
         "Pode tirar dúvidas através do Whatsapp",
         "Ajustes periódicos",
-        "Flexibilidade de horarios",
+        "Flexibilidade de horários",
       ],
       cta: "Contratar",
       highlight: false,
-      message:
-        "Olá! Gostaria de começar minha transformação com o Plano Básico por R$ 299,00 em 3 meses!",
+      message: "Olá! Gostaria de começar minha transformação com o Plano Básico por R$ 299,00 em 3 meses!",
     },
     {
       name: "Plano Avançado",
@@ -653,7 +610,7 @@ function Plans() {
         "Uso de aplicativo com video dos exercícios",
         "Pode tirar dúvidas através do Whatsapp",
         "Ajustes periódicos",
-        "Flexibilidade de horarios",
+        "Flexibilidade de horários",
         "Uma aula presencial (sob consulta de horário)",
       ],
       cta: "Contratar Agora",
@@ -717,20 +674,14 @@ function Plans() {
                 {/* ✅ PREÇO CLEAN - Tudo em uma linha */}
                 <div className="mt-6 flex flex-col items-center gap-2">
                   <div className="flex items-baseline gap-1">
-                    <span className="font-display text-5xl md:text-6xl font-extrabold">
-                      {formatPrice(p.price)}
-                    </span>
-                    <span className="text-muted-foreground text-sm font-medium">
-                      por {p.period}
-                    </span>
+                    <span className="font-display text-5xl md:text-6xl font-extrabold">{formatPrice(p.price)}</span>
+                    <span className="text-muted-foreground text-sm font-medium">por {p.period}</span>
                   </div>
 
                   {/* Preço mensal e economia */}
                   <div className="text-xs text-muted-foreground space-y-1">
                     <p>~{formatPrice(p.monthlyPrice)} por mês</p>
-                    <p className="text-green-600 font-semibold">
-                      Economize {formatPrice(p.savings)}
-                    </p>
+                    <p className="text-green-600 font-semibold">Economize {formatPrice(p.savings)}</p>
                   </div>
                 </div>
 
@@ -739,10 +690,7 @@ function Plans() {
                   {p.features.map((f) => (
                     <li key={f} className="flex items-center justify-center gap-2.5 text-sm">
                       <CheckCircle2
-                        className={cn(
-                          "h-4 w-4 shrink-0",
-                          p.highlight ? "text-brand" : "text-foreground/70",
-                        )}
+                        className={cn("h-4 w-4 shrink-0", p.highlight ? "text-brand" : "text-foreground/70")}
                       />
                       {f}
                     </li>
@@ -781,103 +729,15 @@ function Plans() {
           <div className="max-w-2xl w-full rounded-xl border border-green-500/30 bg-gradient-to-r from-green-500/5 to-emerald-500/5 p-6 md:p-8 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
               <ShieldCheck className="h-5 w-5 text-green-600" />
-              <h4 className="font-semibold text-green-700 text-sm md:text-base">
-                Compra Protegida
-              </h4>
+              <h4 className="font-semibold text-green-700 text-sm md:text-base">Compra Protegida</h4>
             </div>
             <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-              Você tem{" "}
-              <span className="font-semibold text-foreground">7 dias para arrependimento</span>,
-              conforme garantido pelo{" "}
-              <span className="font-semibold text-foreground">
-                Artigo 49 do Código de Defesa do Consumidor (CDC)
-              </span>
-              . Desista sem necessidade de justificativa.
+              Você tem <span className="font-semibold text-foreground">7 dias para arrependimento</span>, conforme
+              garantido pelo{" "}
+              <span className="font-semibold text-foreground">Artigo 49 do Código de Defesa do Consumidor (CDC)</span>.
+              Desista sem necessidade de justificativa.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// =================== BENEFÍCIOS ===================
-function Beneficios() {
-  const blocos = [
-    {
-      title: "Com um Personal Trainer, você tem",
-      text: "Treino personalizado para a sua realidade, alguém que entende suas dores e limitações, identifica o que sabota seus resultados, mostra exatamente onde você precisa melhorar e te dá a orientação necessária para alcançar suas metas com segurança.",
-      image: beneficioPersonalAsset.url,
-      alt: "Personal trainer em Londrina explicando os benefícios do acompanhamento personalizado",
-    },
-    {
-      title: "Você tem um objetivo claro?",
-      text: "Antes de qualquer treino, é preciso saber exatamente onde você quer chegar. Reduzir uma dor, ganhar mobilidade, ou simplesmente voltar a se mover sem medo — definir esse objetivo é o primeiro passo para um plano de treino que realmente funciona para o seu corpo.",
-      image: objetivoClaroAsset.url,
-      alt: "Personal trainer em Londrina questionando sobre definição de objetivos de treino",
-    },
-    {
-      title: "Por que o acompanhamento potencializa seus treinos",
-      text: "Treinar sozinho tem limites. Com acompanhamento profissional, cada exercício é ajustado à sua evolução, corrigido no momento certo e direcionado para o resultado que você busca — com mais segurança e menos chance de estagnar.",
-      image: acompanhamentoTreinoAsset.url,
-      alt: "Personal trainer em Londrina mostrando os benefícios do acompanhamento profissional nos treinos",
-    },
-  ];
-  return (
-    <section id="beneficios" className="py-24 md:py-32">
-      <div className="container-wide">
-        <SectionHead
-          eyebrow="Diferenciais"
-          title={
-            <>
-              Como o acompanhamento profissional{" "}
-              <span className="text-gradient-brand">transforma</span> seu treino
-            </>
-          }
-          description="Três razões pelas quais treinar com orientação especializada muda o resultado — e o processo."
-        />
-        <div className="mt-16 flex flex-col gap-20 md:gap-28">
-          {blocos.map((b, idx) => {
-            const reverse = idx % 2 === 1;
-            return (
-              <article
-                key={b.title}
-                className={cn("grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-14")}
-              >
-                <div
-                  data-animate
-                  className={cn(
-                    reverse ? "scroll-animate-right md:order-2" : "scroll-animate-left",
-                  )}
-                >
-                  <div className="border-border/60 shadow-elevated relative overflow-hidden rounded-2xl border">
-                    <img
-                      src={b.image}
-                      alt={b.alt}
-                      loading="lazy"
-                      className="aspect-[4/5] w-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div
-                  data-animate
-                  style={{ ["--scroll-delay" as never]: "120ms" }}
-                  className={cn(
-                    reverse ? "scroll-animate-left md:order-1" : "scroll-animate-right",
-                  )}
-                >
-                  <div className="border-primary border-l-4 pl-5 md:pl-6">
-                    <h3 className="font-display text-foreground text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
-                      {b.title}
-                    </h3>
-                    <p className="text-muted-foreground mt-5 text-base leading-relaxed sm:text-lg">
-                      {b.text}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
         </div>
       </div>
     </section>
@@ -944,9 +804,7 @@ function FAQSection() {
               <AccordionTrigger className="text-left text-base font-semibold hover:no-underline md:text-lg">
                 {it.q}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-base leading-relaxed">
-                {it.a}
-              </AccordionContent>
+              <AccordionContent className="text-muted-foreground text-base leading-relaxed">{it.a}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
@@ -974,11 +832,7 @@ function Contact() {
           <div data-animate className="scroll-animate-left lg:col-span-1">
             <ContactForm />
           </div>
-          <div
-            data-animate
-            className="scroll-animate"
-            style={{ ["--scroll-delay" as never]: "120ms" }}
-          >
+          <div data-animate className="scroll-animate" style={{ ["--scroll-delay" as never]: "120ms" }}>
             <ContactCard
               icon={MessageCircle}
               title="WhatsApp"
@@ -987,11 +841,7 @@ function Contact() {
               href={waLink}
             />
           </div>
-          <div
-            data-animate
-            className="scroll-animate"
-            style={{ ["--scroll-delay" as never]: "240ms" }}
-          >
+          <div data-animate className="scroll-animate" style={{ ["--scroll-delay" as never]: "240ms" }}>
             <ContactCard
               icon={Instagram}
               title="Instagram"
@@ -1079,10 +929,7 @@ function ContactForm() {
   };
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="border-border/60 bg-background rounded-2xl border p-6 md:p-8 lg:col-span-1"
-    >
+    <form onSubmit={onSubmit} className="border-border/60 bg-background rounded-2xl border p-6 md:p-8 lg:col-span-1">
       <h3 className="font-display text-xl font-bold">Envie sua mensagem</h3>
       <p className="text-muted-foreground mt-1 text-sm">Resposta em até 1 dia útil.</p>
 
@@ -1143,15 +990,7 @@ function ContactForm() {
   );
 }
 
-function Field({
-  label,
-  error,
-  children,
-}: {
-  label: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
+function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
   return (
     <label className="block">
       <span className="text-foreground/80 mb-1.5 block text-sm font-medium">{label}</span>
@@ -1179,18 +1018,13 @@ function Footer() {
             </span>
           </div>
           <p className="text-muted-foreground mt-4 max-w-xs text-sm">
-            Especialista em dores articulares. Mais de 14 anos transformando vidas em Londrina-PR e
-            online.
+            Especialista em dores articulares. Mais de 14 anos transformando vidas em Londrina-PR e online.
           </p>
         </div>
 
         <nav className="grid grid-cols-2 gap-2 text-sm">
           {NAV.map((n) => (
-            <a
-              key={n.id}
-              href={`#${n.id}`}
-              className="text-muted-foreground hover:text-foreground transition"
-            >
+            <a key={n.id} href={`#${n.id}`} className="text-muted-foreground hover:text-foreground transition">
               {n.label}
             </a>
           ))}
@@ -1253,12 +1087,8 @@ function SectionHead({
   return (
     <div className="reveal mx-auto max-w-3xl text-center">
       <span className="text-brand text-xs font-bold uppercase tracking-[0.25em]">{eyebrow}</span>
-      <h2 className="font-display mt-3 text-3xl font-extrabold leading-tight md:text-5xl">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-muted-foreground mt-4 text-base md:text-lg">{description}</p>
-      )}
+      <h2 className="font-display mt-3 text-3xl font-extrabold leading-tight md:text-5xl">{title}</h2>
+      {description && <p className="text-muted-foreground mt-4 text-base md:text-lg">{description}</p>}
     </div>
   );
 }
