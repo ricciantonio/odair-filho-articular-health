@@ -1,40 +1,23 @@
 
-# Nova seção: "Como o acompanhamento profissional transforma seu treino"
+# Diagnóstico: publicação bloqueada
 
-## O que será feito
+Verifiquei as configurações — o projeto **está publicado** e com visibilidade **pública** (`odairfilhopersonal.lovable.app`). O bloqueio para **atualizar** a publicação (novo deploy) geralmente vem de um destes motivos:
 
-### 1. Upload das 3 imagens via Lovable Assets
-Subir as 3 imagens anexadas para o CDN (não ficam no repo):
-- `src/assets/beneficio-personal.jpg.asset.json` (Imagem 1 — checklist)
-- `src/assets/objetivo-claro.jpg.asset.json` (Imagem 2 — objetivo)
-- `src/assets/acompanhamento-treino.jpg.asset.json` (Imagem 3 — potencializa)
+## Causas mais prováveis
 
-### 2. Nova seção em `src/routes/index.tsx`
-Inserida **após Depoimentos** e **antes de FAQ**, com id `beneficios`.
+1. **Plano/permissão da conta** — publicar/atualizar exige plano pago ou permissão de Editor no workspace. Se você abriu o projeto com uma conta Viewer/convidada, o botão "Update" fica desativado.
+2. **Créditos esgotados** — sem créditos disponíveis no workspace, o Publish/Update é bloqueado.
+3. **Findings críticos de segurança** — o `preview_ui--publish` recusa se houver vulnerabilidades críticas pendentes.
+4. **Build com erro** — se o último commit não compilou, não há artefato para publicar.
 
-**Estrutura:**
-- Header da seção: eyebrow "Diferenciais" + título "Como o acompanhamento profissional transforma seu treino"
-- 3 blocos verticais empilhados (`space-y-20 md:space-y-28`) usando grid 2 colunas no desktop (`md:grid-cols-2`), empilhado no mobile
-- Alternância via `md:[&>*:nth-child(2)]:order-first` OU renderizando cada bloco com prop `reverse`:
-  - Bloco 1: imagem esquerda, texto direita
-  - Bloco 2: texto esquerda, imagem direita (reverse)
-  - Bloco 3: imagem esquerda, texto direita
-- Imagens com `rounded-2xl`, `shadow-elevated`, `aspect-[4/5]`, `object-cover`
-- Textos usando tokens semânticos: título `text-foreground` (font-display, bold), corpo `text-muted-foreground`, detalhe vermelho `text-primary` (barra lateral 4px na imagem do próprio arquivo já embutida)
-- Animações scroll: imagem `scroll-animate-left` (ou right no reverse), texto `scroll-animate-right` (ou left), com `--scroll-delay` de 100ms no texto
+## O que vou fazer (com sua aprovação)
 
-**Sem links clicáveis nos blocos** — apenas conteúdo estático.
+1. Rodar `security--run_security_scan` para descartar bloqueio por findings críticos.
+2. Tentar o publish via ferramenta (`preview_ui--publish`) — se falhar, a mensagem de erro dirá exatamente o motivo (plano, créditos, build, etc.) e eu te oriento na correção.
+3. Reportar o resultado.
 
-### 3. Conteúdo dos 3 blocos
-Textos exatamente como fornecidos pelo usuário, com alt-text conforme instruído (SEO local para "Personal trainer em Londrina").
+## Se não for nenhum dos itens acima
 
-## Detalhes técnicos
-- Tokens de tema: `bg-background`, `text-foreground`, `text-muted-foreground`, `text-primary`, `border-border` — funciona em light e dark
-- Espaçamento generoso: seção com `py-24 md:py-32`, gap interno entre blocos `gap-20 md:gap-28`
-- Responsivo: `grid md:grid-cols-2 gap-8 md:gap-16 items-center`
-- Reutiliza o hook `useScrollAnimate` já ativo na página
-
-## Fora de escopo
-- Não alterar outras seções
-- Não adicionar CTAs/links nos blocos
-- Não mexer no favicon, header ou meta tags
+- Confirme que está logado com a conta **proprietária** do projeto.
+- Veja em **Workspace Settings → Billing** se há créditos disponíveis.
+- Tente pelo botão **Publish → Update** no canto superior direito e me envie o texto exato do erro/mensagem que aparece.
