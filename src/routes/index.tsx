@@ -75,6 +75,7 @@ const NAV = [
   { id: "sobre", label: "Sobre" },
   { id: "servicos", label: "Serviços" },
   { id: "resultados", label: "Resultados" },
+  { id: "beneficios", label: "Benefícios" },
   { id: "planos", label: "Planos" },
   { id: "faq", label: "FAQ" },
   { id: "contato", label: "Contato" },
@@ -172,7 +173,7 @@ function Header() {
           <button
             aria-label="Alternar tema"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="hover:bg-accent/60 hidden h-10 w-10 place-items-center rounded-lg transition md:grid"
+            className="hover:bg-accent/60 grid h-10 w-10 place-items-center rounded-lg transition"
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>

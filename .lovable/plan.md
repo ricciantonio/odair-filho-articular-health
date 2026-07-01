@@ -1,23 +1,14 @@
+## Ajustes
 
-# Diagnóstico: publicação bloqueada
+**1. Toggle de tema no mobile**
+No `Header` (src/routes/index.tsx ~L172-178), o botão de alternar tema tem `hidden ... md:grid`, então só aparece em telas ≥ md. Além disso, no menu mobile (drawer, L202-215) o toggle não existe.
 
-Verifiquei as configurações — o projeto **está publicado** e com visibilidade **pública** (`odairfilhopersonal.lovable.app`). O bloqueio para **atualizar** a publicação (novo deploy) geralmente vem de um destes motivos:
+- Remover `hidden ... md:grid` do botão de tema para exibi-lo sempre no header (ao lado do menu hambúrguer).
+- Como alternativa/adicional: incluir também uma linha "Alternar tema (claro/escuro)" dentro do drawer mobile.
 
-## Causas mais prováveis
+**2. Seção Benefícios ausente no menu**
+O array `NAV` (L73-81) não contém a nova seção `beneficios` (que existe em L774 como `id="beneficios"`).
 
-1. **Plano/permissão da conta** — publicar/atualizar exige plano pago ou permissão de Editor no workspace. Se você abriu o projeto com uma conta Viewer/convidada, o botão "Update" fica desativado.
-2. **Créditos esgotados** — sem créditos disponíveis no workspace, o Publish/Update é bloqueado.
-3. **Findings críticos de segurança** — o `preview_ui--publish` recusa se houver vulnerabilidades críticas pendentes.
-4. **Build com erro** — se o último commit não compilou, não há artefato para publicar.
+- Adicionar `{ id: "beneficios", label: "Benefícios" }` no `NAV`, posicionado entre `resultados` e `planos` (mesma ordem visual da página).
 
-## O que vou fazer (com sua aprovação)
-
-1. Rodar `security--run_security_scan` para descartar bloqueio por findings críticos.
-2. Tentar o publish via ferramenta (`preview_ui--publish`) — se falhar, a mensagem de erro dirá exatamente o motivo (plano, créditos, build, etc.) e eu te oriento na correção.
-3. Reportar o resultado.
-
-## Se não for nenhum dos itens acima
-
-- Confirme que está logado com a conta **proprietária** do projeto.
-- Veja em **Workspace Settings → Billing** se há créditos disponíveis.
-- Tente pelo botão **Publish → Update** no canto superior direito e me envie o texto exato do erro/mensagem que aparece.
+Nenhuma outra área é tocada.
